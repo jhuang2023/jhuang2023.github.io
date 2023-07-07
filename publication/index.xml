@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications | Xiaofeng Liu</title>
+    <link>https://xiaofengliu-is.github.io/publication/</link>
+      <atom:link href="https://xiaofengliu-is.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
+    <description>Publications</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
+    <image>
+      <url>https://xiaofengliu-is.github.io/media/icon_hu25ade00064a653ab5de1f8e5e2294fed_4934_512x512_fill_lanczos_center_3.png</url>
+      <title>Publications</title>
+      <link>https://xiaofengliu-is.github.io/publication/</link>
+    </image>
+    
+  </channel>
+</rss>
