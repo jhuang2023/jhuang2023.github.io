@@ -1,0 +1,16 @@
+services:
+  jekyll:
+    build: .
+    container_name: modern-resume-theme
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    volumes:
+      - ./:/srv/jekyll
+      - bundle_cache:/usr/local/bundle
+    environment:
+      JEKYLL_ENV: development
+      BUNDLE_FORCE_RUBY_PLATFORM: "1"
+
+volumes:
+  bundle_cache:

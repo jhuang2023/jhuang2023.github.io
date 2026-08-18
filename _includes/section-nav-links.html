@@ -1,0 +1,64 @@
+{% assign profile = include.profile %}
+{% assign view = include.view %}
+{% assign lang = include.lang | default: "en" %}
+{% assign about = profile.about %}
+{% assign all_sections = profile.sections %}
+{% assign dedupe_groups = view.dedupe_groups %}
+{% if dedupe_groups == nil %}
+  {% assign dedupe_groups = true %}
+{% endif %}
+{% if view.show_all_sections %}
+  {% assign dedupe_groups = false %}
+{% endif %}
+
+{% if view.show_all_sections %}
+  {% assign section_entries = all_sections %}
+{% else %}
+  {% assign section_entries = view.sections %}
+{% endif %}
+
+{% assign selected_groups = "|" %}
+{% assign nav_index = 0 %}
+<ul class="section-nav-list">
+  {% if view.show_about %}
+    {% assign nav_index = nav_index | plus: 1 %}
+    <li>
+      <a class="section-nav-link" href="#{{ lang }}-about" data-nav-section="about" data-nav-label="{{ about.title | default: "About Me" | escape }}">
+        <span class="section-nav-link-index" aria-hidden="true">{{ nav_index | prepend: "0" | slice: -2, 2 }}</span>
+        <span class="section-nav-link-label">{{ about.title | default: "About Me" }}</span>
+      </a>
+    </li>
+  {% endif %}
+
+  {% for section_entry in section_entries %}
+    {% if view.show_all_sections %}
+      {% assign section_id = section_entry[0] %}
+      {% assign section = section_entry[1] %}
+    {% else %}
+      {% assign section_id = section_entry %}
+      {% assign section = all_sections[section_id] %}
+    {% endif %}
+
+    {% if section %}
+      {% assign section_group = section.group | default: section_id %}
+      {% assign group_marker = "|" | append: section_group | append: "|" %}
+      {% assign should_render = true %}
+      {% if dedupe_groups and selected_groups contains group_marker %}
+        {% assign should_render = false %}
+      {% endif %}
+
+      {% if should_render %}
+        {% if dedupe_groups %}
+          {% assign selected_groups = selected_groups | append: section_group | append: "|" %}
+        {% endif %}
+        {% assign nav_index = nav_index | plus: 1 %}
+        <li>
+          <a class="section-nav-link" href="#{{ lang }}-{{ section_id }}" data-nav-section="{{ section_id }}" data-nav-label="{{ section.title | escape }}">
+            <span class="section-nav-link-index" aria-hidden="true">{{ nav_index | prepend: "0" | slice: -2, 2 }}</span>
+            <span class="section-nav-link-label">{{ section.title }}</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>

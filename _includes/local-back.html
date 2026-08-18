@@ -1,0 +1,67 @@
+<button
+  type="button"
+  class="local-back no-print"
+  id="local-back"
+  hidden
+  aria-label="{{ site.data.ui.en.profile_hub | escape }}"
+  title="{{ site.data.ui.en.profile_hub | escape }}"
+  data-label-en="{{ site.data.ui.en.profile_hub | escape }}"
+  data-label-zh="{{ site.data.ui.zh.profile_hub | escape }}"
+>
+  <svg class="local-back-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+  <span class="local-back-label" data-i18n="en">{{ site.data.ui.en.back }}</span>
+  <span class="local-back-label" data-i18n="zh">{{ site.data.ui.zh.back }}</span>
+</button>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("public") === "true") {
+      return;
+    }
+
+    var host = window.location.hostname;
+    var isLocal =
+      host === "localhost" ||
+      host === "127.0.0.1" ||
+      host === "0.0.0.0" ||
+      host === "[::1]" ||
+      host === "::1";
+    if (!isLocal) {
+      return;
+    }
+
+    var button = document.getElementById("local-back");
+    if (!button) {
+      return;
+    }
+
+    var rootUrl = {{ '/' | relative_url | jsonify }};
+    var path = window.location.pathname.replace(/\/+$/, "") || "/";
+    var rootPath = String(rootUrl || "/").replace(/\/+$/, "") || "/";
+    if (path === rootPath) {
+      return;
+    }
+
+    button.hidden = false;
+    button.addEventListener("click", function () {
+      window.location.href = rootUrl;
+    });
+
+    function syncLabel() {
+      var lang =
+        document.documentElement.getAttribute("data-site-lang") === "zh"
+          ? "zh"
+          : "en";
+      var label =
+        button.getAttribute(lang === "zh" ? "data-label-zh" : "data-label-en") ||
+        "Profile hub";
+      button.setAttribute("aria-label", label);
+      button.setAttribute("title", label);
+    }
+
+    syncLabel();
+    window.addEventListener("site-lang-change", syncLabel);
+  })();
+</script>

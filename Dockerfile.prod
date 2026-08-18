@@ -1,0 +1,22 @@
+FROM ruby:2.7-bullseye AS build
+
+WORKDIR /srv/jekyll
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends build-essential git \
+  && rm -rf /var/lib/apt/lists/* \
+  && gem install bundler -v 2.4.22
+
+ENV BUNDLE_FORCE_RUBY_PLATFORM=1
+
+COPY . .
+RUN bundle install
+
+ENV JEKYLL_ENV=production
+RUN bundle exec jekyll build
+
+FROM nginx:1.27-alpine
+
+COPY --from=build /srv/jekyll/_site /usr/share/nginx/html
+
+EXPOSE 80

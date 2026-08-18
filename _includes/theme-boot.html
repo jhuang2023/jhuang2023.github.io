@@ -1,0 +1,9 @@
+{%- if site.darkmode == false -%}
+<script>
+  (function () {
+    var theme = document.documentElement.getAttribute("data-theme") || "light";
+    document.body.classList.toggle("dark", theme === "dark");
+    document.body.classList.toggle("theme-light", theme === "light");
+  })();
+</script>
+{%- endif -%}

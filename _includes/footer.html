@@ -1,0 +1,28 @@
+{% assign person = site.data.profile.person %}
+{% assign ui_en = site.data.ui.en %}
+{% assign ui_zh = site.data.ui.zh %}
+<footer class="container footer-container no-print">
+  <p>
+    {{ person.name | escape }} -
+    <a href="mailto:{{ person.email }}" target="_blank">{{ person.email | escape }}</a>
+    {%- if site.footer_show_references -%}
+      &nbsp;-
+      <span data-i18n="en">{{ site.references_title | default: ui_en.references_on_request }}</span>
+      <span data-i18n="zh">{{ ui_zh.references_on_request }}</span>
+    {%- endif -%}
+  </p>
+</footer>
+{%- comment -%}
+  Over-scroll reveal. Kept outside .footer-container: that element is shifted by
+  the pull transform, and a transformed ancestor would break `position: fixed`.
+{%- endcomment -%}
+<div class="profile-easter-egg no-print" data-profile-easter-egg aria-hidden="true">
+  <p class="profile-easter-motto">
+    <span data-i18n="en">What I cannot create, I do not understand.</span>
+    <span data-i18n="zh">我无法创造的东西，我就不理解。</span>
+  </p>
+  <p class="profile-easter-end">
+    <span data-i18n="en">You made it to the very bottom. Let's talk — email is right above.</span>
+    <span data-i18n="zh">都滑到底了，不如聊聊？邮箱就在上面。</span>
+  </p>
+</div>

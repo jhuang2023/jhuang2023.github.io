@@ -1,0 +1,71 @@
+{% for item in include.content %}
+  <div class="row clearfix layout layout-{{item.layout | default: 'left'}}">
+    <div class="col-xs-12 col-sm-4 col-md-3 details">
+      {%- if item.title_link -%}
+        <h4>{% include a.html href=item.title_link class="item-title-link" title=item.title %}{{ item.title }}</a></h4>
+      {%- else -%}
+        <h4>{{ item.title }}</h4>
+      {%- endif -%}
+      {%- if item.sub_title -%}<p><b>{{ item.sub_title }}</b></p>{%- endif -%}
+      {%- if item.caption or item.role -%}
+        <p class="item-meta">{%- if item.caption -%}{{ item.caption }}{%- endif -%}{% if item.caption and item.role %} · {% endif %}{%- if item.role -%}<span class="item-role">{{ item.role }}</span>{%- endif -%}</p>
+      {%- endif -%}
+
+      {%- assign ref_count = item.references | size -%}
+      {%- if item.link and ref_count > 0 -%}
+        {%- assign primary_tip = item.link_title | default: item.link_text | default: site.data.ui.en.live_demo -%}
+        <p class="item-references item-references--demos no-print">
+          <span class="demo-label-wrap">{% include a.html href=item.link class="link" title=primary_tip %}<span data-i18n="en">{{ site.data.ui.en.live_demo }}</span><span data-i18n="zh">{{ site.data.ui.zh.live_demo }}</span></a>:</span>
+          <span class="demo-indexes">
+            {% include a.html href=item.link class="link demo-index" title=primary_tip %}1</a>
+            {%- for ref in item.references -%}
+              {%- assign protocol = ref.url | strip | slice: 0, 4 -%}
+              {%- assign ref_tip = ref.title | default: ref.url -%}
+              <a href="{% if protocol != 'http' %}//{% endif %}{{ ref.url }}" target="_blank" rel="noopener" class="link demo-index" title="{{ ref_tip | escape }}" data-tip="{{ ref_tip | escape }}" onclick="this.blur()">{{ forloop.index | plus: 1 }}</a>
+            {%- endfor -%}
+          </span>
+        </p>
+      {%- elsif ref_count == 1 -%}
+        {%- assign only_ref = item.references | first -%}
+        {%- assign only_tip = only_ref.title | default: site.data.ui.en.live_demo -%}
+        <p class="no-print item-link">
+          {% include a.html href=only_ref.url class="link" title=only_tip %}<span data-i18n="en">{{ site.data.ui.en.live_demo }}</span><span data-i18n="zh">{{ site.data.ui.zh.live_demo }}</span></a>
+        </p>
+      {%- elsif ref_count > 1 -%}
+        {%- assign first_ref = item.references | first -%}
+        {%- assign first_tip = first_ref.title | default: site.data.ui.en.live_demo -%}
+        <p class="item-references item-references--demos no-print">
+          <span class="demo-label-wrap">{% include a.html href=first_ref.url class="link" title=first_tip %}<span data-i18n="en">{{ site.data.ui.en.live_demo }}</span><span data-i18n="zh">{{ site.data.ui.zh.live_demo }}</span></a>:</span>
+          <span class="demo-indexes">
+            {%- for ref in item.references -%}
+              {%- assign protocol = ref.url | strip | slice: 0, 4 -%}
+              {%- assign ref_tip = ref.title | default: ref.url -%}
+              <a href="{% if protocol != 'http' %}//{% endif %}{{ ref.url }}" target="_blank" rel="noopener" class="link demo-index" title="{{ ref_tip | escape }}" data-tip="{{ ref_tip | escape }}" onclick="this.blur()">{{ forloop.index }}</a>
+            {%- endfor -%}
+          </span>
+        </p>
+      {%- elsif item.link -%}
+        {%- assign solo_tip = item.link_title | default: item.title -%}
+        <p class="no-print item-link">
+          {% include a.html href=item.link class="link" title=solo_tip %}
+            {%- if item.link_text -%}{{ item.link_text }}{%- else -%}{{ item.link }}{%- endif -%}
+          </a>
+        </p>
+      {%- endif -%}
+
+      <p class="no-print aditional-links">
+        {% for link in item.additional_links %}
+          {% include a.html href=link.url class="" title=link.title %}
+            <i class="{{ link.icon }}" title="{{ link.title | escape }}"></i>
+          </a>
+        {% endfor %}
+      </p>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-9 content">
+      {%- if item.quote -%}
+        <p class="quote">{{ item.quote }}</p>
+      {%- endif -%}
+      {{ item.description | strip | markdownify }}
+    </div>
+  </div>
+{% endfor %}

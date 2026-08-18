@@ -1,0 +1,418 @@
+/* Shared theme tokens for resume pages */
+body {
+  --page-bg: #ffffff;
+  --page-text: #333333;
+  --page-muted: #4c4c4c;
+  --page-border: #cccccc;
+  --page-mark-bg: #333333;
+  --page-mark-text: #ffffff;
+  --page-link: #477dca;
+  --page-link-hover: #355e98;
+  --page-contact: #bbbbbb;
+  --page-contact-hover: #4c4c4c;
+  --section-nav-accent: #173f6b;
+  --section-nav-accent-soft: #e9f0f7;
+  --section-nav-muted: #8793a0;
+  --page-table-border: #ddd;
+  --page-table-header: #a6a6a6;
+  --theme-toggle-color: #333333;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body.dark {
+  --page-bg: #222222;
+  --page-text: #e6e6e6;
+  --page-muted: #c8c8c8;
+  --page-border: #555555;
+  --page-mark-bg: #e6e6e6;
+  --page-mark-text: #222222;
+  --page-link: #6ba3e8;
+  --page-link-hover: #9bc2f0;
+  --page-contact: #bbbbbb;
+  --page-contact-hover: #e6e6e6;
+  --section-nav-accent: #e7b86b;
+  --section-nav-accent-soft: #3a3021;
+  --section-nav-muted: #aeb8c0;
+  --page-table-border: #444444;
+  --page-table-header: #777777;
+  --theme-toggle-color: #e6e6e6;
+
+  background-color: var(--page-bg);
+  color: var(--page-text);
+
+  mark {
+    color: var(--page-mark-text);
+    background-color: var(--page-mark-bg);
+  }
+
+  a {
+    color: var(--page-link);
+  }
+
+  a:active,
+  a:focus,
+  a:hover {
+    color: var(--page-link-hover);
+  }
+
+  th {
+    border-bottom-color: var(--page-table-header);
+  }
+
+  h3 {
+    border-top-color: var(--page-border);
+  }
+
+  td {
+    border-bottom-color: var(--page-table-border);
+  }
+
+  hr {
+    border-bottom-color: var(--page-border);
+  }
+
+  .contact a {
+    color: var(--page-contact);
+  }
+
+  .contact a:hover {
+    color: var(--page-contact-hover);
+  }
+
+  a.doc-action,
+  .doc-action {
+    color: var(--page-contact);
+  }
+
+  a.doc-action:hover,
+  a.doc-action:focus,
+  a.doc-action:focus-visible,
+  .doc-action:hover,
+  .doc-action:focus,
+  .doc-action:focus-visible {
+    color: var(--page-contact-hover);
+  }
+
+  .footer-container p,
+  .footer-container a {
+    color: var(--page-muted);
+  }
+}
+
+/* Localhost-only back button */
+.local-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  background-color: transparent;
+  color: var(--page-contact, #bbbbbb);
+  box-shadow: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.18s ease, color 0.18s ease;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    opacity: 1;
+    background: transparent;
+    background-color: transparent;
+    color: var(--page-contact-hover, #4C4C4C);
+    outline: none;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+.local-back[hidden] {
+  display: none !important;
+}
+
+.local-back-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+body.dark .local-back,
+body.landing-page:not(.theme-light) .local-back {
+  color: #c8d0d6;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: #ffffff;
+    background: transparent;
+    background-color: transparent;
+  }
+}
+
+body.theme-light .local-back {
+  color: #777777;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: #222222;
+    background: transparent;
+    background-color: transparent;
+  }
+}
+
+@media print {
+  .local-back {
+    display: none !important;
+  }
+}
+
+/* Language toggle — top-right, mirrors local-back on the left */
+.lang-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid rgba(200, 208, 214, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--page-contact, #bbbbbb);
+  box-shadow: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  opacity: 0.85;
+  transition: opacity 0.18s ease, color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus,
+.lang-toggle:focus-visible {
+  opacity: 1;
+  outline: none;
+  color: var(--page-contact-hover, #4c4c4c);
+  border-color: rgba(76, 76, 76, 0.45);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+body.dark .lang-toggle,
+body.landing-page:not(.theme-light) .lang-toggle {
+  color: #c8d0d6;
+  border-color: rgba(200, 208, 214, 0.35);
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+body.theme-light .lang-toggle {
+  color: #777777;
+  border-color: rgba(0, 0, 0, 0.18);
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    color: #222222;
+    border-color: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Corner chrome tweaks on small screens (landing / before section-nav parks controls) */
+@media screen and (max-width: 768px) {
+  body:not(.has-section-nav) .local-back {
+    top: 14px;
+    left: 12px;
+    gap: 6px;
+    padding: 10px 8px;
+    font-size: 17px;
+  }
+
+  body:not(.has-section-nav) .local-back-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  body:not(.has-section-nav) .lang-toggle {
+    top: 14px;
+    right: 12px;
+    min-width: 48px;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* i18n visibility — default English until boot/script sets data-site-lang */
+html:not([data-site-lang="zh"]) [data-i18n="zh"],
+html[data-site-lang="zh"] [data-i18n="en"] {
+  display: none !important;
+}
+
+@media print {
+  .lang-toggle {
+    display: none !important;
+  }
+}
+
+/* Theme toggle — shared across landing and resume pages */
+.theme-toggle {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  top: auto;
+  right: auto;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #333333;
+  color: #ffffff;
+  box-shadow: none;
+  cursor: pointer;
+  opacity: 0.18;
+  transition: opacity 0.18s ease, transform 0.18s ease, background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+
+  &:hover {
+    opacity: 1;
+    background: #222222;
+    color: #ffffff;
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    opacity: 0.18;
+    box-shadow: none;
+    transform: none;
+  }
+
+  &:focus:hover,
+  &:focus-visible:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+  }
+
+  .theme-toggle-icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  /* Dark theme: show sun (switch to light) */
+  .theme-toggle-icon--sun {
+    display: inline;
+  }
+
+  .theme-toggle-icon--moon {
+    display: none;
+  }
+}
+
+body.dark .theme-toggle,
+body.landing-page:not(.theme-light) .theme-toggle {
+  background: #e6e6e6;
+  color: #222222;
+  opacity: 0.18;
+
+  &:hover {
+    opacity: 1;
+    background: #ffffff;
+    color: #111111;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+  }
+
+  &:focus,
+  &:focus-visible {
+    opacity: 0.18;
+    box-shadow: none;
+    transform: none;
+  }
+
+  &:focus:hover,
+  &:focus-visible:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+  }
+}
+
+/* Light theme: show moon (switch to dark) */
+body.theme-light .theme-toggle {
+  background: #333333;
+  color: #ffffff;
+  opacity: 0.18;
+
+  .theme-toggle-icon--sun {
+    display: none;
+  }
+
+  .theme-toggle-icon--moon {
+    display: inline;
+  }
+
+  &:hover {
+    opacity: 1;
+    background: #222222;
+    color: #ffffff;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+  }
+
+  &:focus,
+  &:focus-visible {
+    opacity: 0.18;
+    box-shadow: none;
+    transform: none;
+  }
+
+  &:focus:hover,
+  &:focus-visible:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+  }
+}
+
+@media print {
+  .theme-toggle {
+    display: none !important;
+  }
+}

@@ -1,0 +1,68 @@
+{% assign view_en = site.data.profile.views[page.profile] %}
+{% assign view_zh = site.data.profile_zh.views[page.profile] %}
+{% if view_en %}
+  {% assign ui_en = site.data.ui.en %}
+  {% assign ui_zh = site.data.ui.zh %}
+  <nav class="section-nav no-print" aria-label="{{ ui_en.section_nav }}" data-section-nav>
+    <div id="section-nav-drawer" class="section-nav-drawer" data-section-nav-drawer>
+      <div class="section-nav-header">
+        <div class="section-nav-heading">
+          <p class="section-nav-label" data-i18n="en">{{ ui_en.section_nav }}</p>
+          <p class="section-nav-label" data-i18n="zh">{{ ui_zh.section_nav }}</p>
+          <p class="section-nav-count" data-section-nav-count aria-live="polite">01 / 01</p>
+        </div>
+        <button
+          type="button"
+          id="section-nav-toggle"
+          class="section-nav-toggle"
+          data-section-nav-toggle
+          aria-expanded="true"
+          aria-controls="section-nav-drawer"
+          aria-label="{{ ui_en.section_nav_collapse }}"
+          data-label-collapse-en="{{ ui_en.section_nav_collapse }}"
+          data-label-expand-en="{{ ui_en.section_nav_expand }}"
+          data-label-collapse-zh="{{ ui_zh.section_nav_collapse }}"
+          data-label-expand-zh="{{ ui_zh.section_nav_expand }}"
+        >
+          <svg class="section-nav-toggle-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <path d="M10.2 3.2 5.4 8l4.8 4.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="section-nav-index">
+        <div class="section-nav-progress" aria-hidden="true">
+          <span class="section-nav-progress-bar" data-section-nav-progress-bar></span>
+        </div>
+        <div class="section-nav-body">
+          <div class="section-nav-panel" data-i18n="en">
+            {% include section-nav-links.html profile=site.data.profile view=view_en lang="en" %}
+          </div>
+          <div class="section-nav-panel" data-i18n="zh">
+            {% include section-nav-links.html profile=site.data.profile_zh view=view_zh lang="zh" %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-nav-mobile" aria-label="{{ ui_en.section_nav }}">
+      <div class="section-nav-mobile-topline">
+        <span class="section-nav-mobile-title" data-i18n="en">{{ ui_en.section_nav }}</span>
+        <span class="section-nav-mobile-title" data-i18n="zh">{{ ui_zh.section_nav }}</span>
+        <span class="section-nav-mobile-count" data-section-nav-mobile-count>01 / 01</span>
+      </div>
+      <div class="section-nav-mobile-panel" data-i18n="en">
+        <div class="section-nav-mobile-viewport" data-section-nav-mobile-viewport tabindex="0">
+          {% include section-nav-links.html profile=site.data.profile view=view_en lang="en" %}
+        </div>
+      </div>
+      <div class="section-nav-mobile-panel" data-i18n="zh">
+        <div class="section-nav-mobile-viewport" data-section-nav-mobile-viewport tabindex="0">
+          {% include section-nav-links.html profile=site.data.profile_zh view=view_zh lang="zh" %}
+        </div>
+      </div>
+      <div class="section-nav-mobile-progress" data-section-nav-mobile-progress aria-hidden="true">
+        <span class="section-nav-mobile-progress-bar" data-section-nav-mobile-progress-bar></span>
+      </div>
+    </div>
+  </nav>
+{% endif %}

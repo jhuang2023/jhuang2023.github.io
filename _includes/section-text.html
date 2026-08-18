@@ -1,0 +1,14 @@
+<div class="row clearfix">
+  {%- if include.profile_image and include.profile_image != "" -%}
+    <div class="col-xs-12 col-sm-4 col-md-3 no-print">
+      <span class="profile-img" style="background-image: url({{ include.profile_image | relative_url }})"></span>
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-9 col-print-12">
+      {{ include.content | strip | markdownify }}
+    </div>
+  {%- else -%}
+    <div class="col-md-12">
+      {{ include.content | strip | markdownify }}
+    </div>
+  {%- endif -%}
+</div>

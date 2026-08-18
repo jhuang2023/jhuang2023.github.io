@@ -1,0 +1,63 @@
+<head>
+  {% assign person = site.data.profile.person %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ person.name }} | {{ page.title | default: person.title }}</title>
+  {%- seo title=false -%}
+
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | default: '/assets/favicon.ico' | relative_url }}">
+
+  <!-- Academicons — used for the Google Scholar / SSRN icons in site.additional_links -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous">
+
+  <script>
+    (function () {
+      try {
+        var lang = null;
+        var base = document.documentElement.getAttribute("data-site-base") || "";
+        var root = String(base).replace(/\/+$/, "");
+        var path = window.location.pathname || "/";
+        if (root && path.indexOf(root) === 0) {
+          path = path.slice(root.length) || "/";
+        }
+        var match = path.match(/^\/(en|zh)(?:\/|$)/);
+        if (match) {
+          lang = match[1];
+        } else {
+          lang = localStorage.getItem("site-lang");
+        }
+        if (lang !== "zh" && lang !== "en") {
+          lang = "en";
+        }
+        document.documentElement.setAttribute("lang", lang);
+        document.documentElement.setAttribute("data-site-lang", lang);
+      } catch (e) {
+        document.documentElement.setAttribute("data-site-lang", "en");
+      }
+    })();
+  </script>
+  {%- if site.darkmode == false -%}
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem("site-theme") || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.classList.add("theme-boot-" + theme);
+      } catch (e) {}
+    })();
+  </script>
+  {%- endif -%}
+
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+  {%- endif -%}
+  {%- if jekyll.environment == 'production' and site.gtm -%}
+    {%- include gtm_head.html -%}
+  {%- endif -%}
+  {%- if jekyll.environment == 'production' and site.gtag -%}
+    {%- include gtag.html -%}
+  {%- endif -%}
+</head>

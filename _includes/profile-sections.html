@@ -1,0 +1,128 @@
+{% assign profile = include.profile %}
+{% assign view = include.view %}
+{% assign lang = include.lang | default: "en" %}
+{% assign about = profile.about %}
+{% assign all_views = profile.views %}
+{% assign all_sections = profile.sections %}
+{% assign dedupe_groups = view.dedupe_groups %}
+{% if dedupe_groups == nil %}
+  {% assign dedupe_groups = true %}
+{% endif %}
+{% if view.show_all_sections %}
+  {% assign dedupe_groups = false %}
+{% endif %}
+
+{% if view.show_about %}
+  <div class="container intro-container" id="{{ lang }}-about" data-section-id="about">
+    <h3>{{ about.title | default: "About Me" }}</h3>
+    <div class="row clearfix">
+      {%- if about.profile_image and view.show_profile_image -%}
+        <div class="col-xs-12 col-sm-4 col-md-3 no-print">
+          <span class="profile-img" style="background-image: url({{ about.profile_image | relative_url }})"></span>
+        </div>
+      {%- endif -%}
+      <div class="{{ 'col-xs-12 ' }}{%- if about.profile_image and view.show_profile_image -%}col-sm-8 col-md-9 col-print-12{%- endif -%}">
+        {{ about.content | strip | markdownify }}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% assign pending_profile_image = false %}
+{% if view.show_profile_image and about.profile_image %}
+  {% unless view.show_about %}
+    {% assign pending_profile_image = true %}
+  {% endunless %}
+{% endif %}
+
+{% assign selected_groups = "|" %}
+
+{% if view.show_all_sections %}
+  {% assign section_entries = all_sections %}
+{% else %}
+  {% assign section_entries = view.sections %}
+{% endif %}
+
+{% for section_entry in section_entries %}
+  {% if view.show_all_sections %}
+    {% assign section_id = section_entry[0] %}
+    {% assign section = section_entry[1] %}
+  {% else %}
+    {% assign section_id = section_entry %}
+    {% assign section = all_sections[section_id] %}
+  {% endif %}
+
+  {% if section %}
+    {% assign section_group = section.group | default: section_id %}
+    {% assign group_marker = "|" | append: section_group | append: "|" %}
+    {% assign should_render = true %}
+    {% if dedupe_groups and selected_groups contains group_marker %}
+      {% assign should_render = false %}
+    {% endif %}
+
+    {% if should_render %}
+      {% if dedupe_groups %}
+        {% assign selected_groups = selected_groups | append: section_group | append: "|" %}
+      {% endif %}
+
+      {% assign path_tags = "" %}
+      {% assign path_count = 0 %}
+      {% for view_entry in all_views %}
+        {% assign view_id = view_entry[0] %}
+        {% assign other_view = view_entry[1] %}
+        {% if other_view.sections contains section_id %}
+          {% if path_count > 0 %}
+            {% assign path_tags = path_tags | append: "," %}
+          {% endif %}
+          {% assign path_tags = path_tags | append: view_id %}
+          {% assign path_count = path_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign group_count = 0 %}
+      {% for group_entry in all_sections %}
+        {% assign other_section = group_entry[1] %}
+        {% assign other_group = other_section.group | default: group_entry[0] %}
+        {% if other_group == section_group %}
+          {% assign group_count = group_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      {% assign is_duplicate = false %}
+      {% if group_count > 1 %}
+        {% assign is_duplicate = true %}
+      {% endif %}
+
+      <div class="container {{ section.layout }}-container" id="{{ lang }}-{{ section_id }}" data-section-id="{{ section_id }}" data-section-group="{{ section_group }}">
+        <h3{% if view.show_section_meta %} class="section-heading section-heading--meta"{% endif %}>
+          <span class="section-heading-main">
+            <span class="section-heading-title">{{ section.title }}</span>
+            {% if view.show_section_meta %}
+              <span class="section-meta no-print">
+                {% if path_count > 0 %}
+                  {% assign path_list = path_tags | split: "," %}
+                  {% for path_id in path_list %}
+                    <span class="section-meta-tag section-meta-path section-meta-path--{{ path_id }}">{{ path_id }}</span>
+                  {% endfor %}
+                {% else %}
+                  <span class="section-meta-tag section-meta-unpicked">unpicked</span>
+                {% endif %}
+                {% if is_duplicate %}
+                  <span class="section-meta-tag section-meta-duplicate">duplicate · {{ section_group }}</span>
+                {% endif %}
+              </span>
+            {% endif %}
+          </span>
+          {% if view.show_section_meta %}
+            <span class="section-meta-id no-print">{{ section_id }}</span>
+          {% endif %}
+        </h3>
+        {% if pending_profile_image and section.layout == "text" %}
+          {% include section-text.html content=section.content profile_image=about.profile_image %}
+          {% assign pending_profile_image = false %}
+        {% else %}
+          {% include {{ section.layout | prepend: "section-" | append: ".html" }} content=section.content %}
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+{% endfor %}

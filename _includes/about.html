@@ -1,0 +1,14 @@
+<div class="container intro-container">
+  {% assign about = site.data.profile.about %}
+  <h3>{{ about.title | default: "About Me" }}</h3>
+  <div class="row clearfix">
+    {%- if about.profile_image -%}
+      <div class="col-xs-12 col-sm-4 col-md-3 no-print">
+        <span class="profile-img" style="background-image: url({{ about.profile_image | relative_url }})"></span>
+      </div>
+    {%- endif -%}
+    <div class="{{ 'col-xs-12 ' }}{%- if about.profile_image -%}col-sm-8 col-md-9 col-print-12{%- endif -%}">
+      {{ about.content | strip | markdownify }}
+    </div>
+  </div>
+</div>

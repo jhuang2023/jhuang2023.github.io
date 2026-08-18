@@ -1,0 +1,207 @@
+{% assign person_en = site.data.profile.person %}
+{% assign person_zh = site.data.profile_zh.person %}
+{% assign ui_en = site.data.ui.en %}
+{% assign ui_zh = site.data.ui.zh %}
+{% if page.profile %}
+  {% assign profile_view_en = site.data.profile.views[page.profile] %}
+  {% assign profile_view_zh = site.data.profile_zh.views[page.profile] %}
+{% endif %}
+<div class="container header-contianer">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-8 header-left">
+      <h1>{{ person_en.name | escape }}</h1>
+      {% if page.profile and profile_view_en.header_title %}
+        <h2 data-i18n="en">{{ profile_view_en.header_title | escape }}</h2>
+        <h2 data-i18n="zh">{{ profile_view_zh.header_title | escape }}</h2>
+      {% elsif person_en.company and person_en.company_url and person_en.title contains person_en.company %}
+        {% assign title_prefix_en = person_en.title | split: person_en.company | first %}
+        <h2 data-i18n="en">{{ title_prefix_en | escape }}{% include a.html href=person_en.company_url class="header-company-link" %}{{ person_en.company | escape }}</a></h2>
+        <h2 data-i18n="zh">{% include a.html href=person_zh.company_url class="header-company-link" %}{{ person_zh.company | escape }}</a> {{ person_zh.title | remove: person_zh.company | strip | escape }}</h2>
+      {% else %}
+        <h2 data-i18n="en">{{ person_en.title | escape }}</h2>
+        <h2 data-i18n="zh">{{ person_zh.title | escape }}</h2>
+      {% endif %}
+
+      {% if page.profile %}
+        <div class="doc-actions no-print">
+          <button
+            type="button"
+            class="doc-action"
+            aria-label="{{ ui_en.print | escape }}"
+            title="{{ ui_en.print | escape }}"
+            data-label-en="{{ ui_en.print | escape }}"
+            data-label-zh="{{ ui_zh.print | escape }}"
+            data-print-action
+            onclick="window.print(); this.blur();"
+          >
+            <svg class="doc-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M7 8V3h10v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M7 17H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M7 14h10v7H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+
+          {% if profile_view_en.downloads and profile_view_en.downloads.size > 0 %}
+            {% assign download_item_en = profile_view_en.downloads | first %}
+            {% assign download_item_zh = profile_view_zh.downloads | first %}
+            <a
+              class="doc-action"
+              href="{{ download_item_en.path | relative_url }}"
+              download
+              aria-label="{{ download_item_en.label | default: 'Download' | escape }}"
+              title="{{ download_item_en.label | default: 'Download' | escape }}"
+              data-i18n="en"
+            >
+              <svg class="doc-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3v12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7 11l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M5 19h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a
+              class="doc-action"
+              href="{{ download_item_zh.path | default: download_item_en.path | relative_url }}"
+              download
+              aria-label="{{ download_item_zh.label | default: download_item_en.label | escape }}"
+              title="{{ download_item_zh.label | default: download_item_en.label | escape }}"
+              data-i18n="zh"
+            >
+              <svg class="doc-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3v12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7 11l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M5 19h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 header-right">
+      <ul class="icons no-print">
+        {%- if site.dribbble_username -%}
+          <li>
+            <a target="_blank" href="https://dribbble.com/{{ site.dribbble_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-dribbble-square" title="Dribble link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.facebook_username -%}
+          <li>
+            <a target="_blank" href="https://www.facebook.com/{{ site.facebook_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-facebook" title="Facebook link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.flickr_username -%}
+          <li>
+            <a target="_blank" href="https://www.flickr.com/photos/{{ site.flickr_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-flickr" title="Flickr link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if person_en.github_username -%}
+          <li>
+            <a target="_blank" href="https://github.com/{{ person_en.github_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-github" title="Github link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.stackoverflow_username -%}
+          <li>
+            <a target="_blank" href="https://stackoverflow.com/users/{{ site.stackoverflow_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-stack-overflow" title="Stackoverflow link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.instagram_username -%}
+          <li>
+            <a target="_blank" href="https://www.instagram.com/{{ site.instagram_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-instagram" title="Instagram link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if person_en.linkedin_username -%}
+          <li>
+            <a target="_blank" href="https://www.linkedin.com/in/{{ person_en.linkedin_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-linkedin" title="Linkedin link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.xing_username -%}
+          <li>
+            <a target="_blank" href="https://www.xing.com/profile/{{ site.xing_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-xing" title="Xing link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.pinterest_username -%}
+          <li>
+            <a target="_blank" href="https://www.pinterest.com/{{ site.pinterest_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-pinterest" title="Pintrest link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.twitter_username -%}
+          <li>
+            <a target="_blank" href="https://twitter.com/{{ site.twitter_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-twitter" title="Twitter link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.youtube_username -%}
+          <li>
+            <a target="_blank" href="https://www.youtube.com/{{ site.youtube_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-youtube" title="Youtube link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.googleplus_username -%}
+          <li>
+            <a target="_blank" href="https://plus.google.com/{{ site.googleplus_username| escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-google-plus" title="Google plus link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if site.orcid_username -%}
+          <li>
+            <a target="_blank" href="https://orcid.org/{{ site.orcid_username | escape }}" class="button button--sacnite button--round-l">
+              <i class="fab fa-orcid" title="ORCiD link"></i>
+            </a>
+          </li>
+        {%- endif -%}
+        {% for link in site.additional_links %}
+          <li>
+            {% include a.html href=link.url class="button button--sacnite button--round-l" %}
+              <i class="{{ link.icon }}" title="{{ link.title | escape }}"></i>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+      {%- if person_en.email -%}
+        <p>
+          <span data-i18n="en">{{ ui_en.email_label }}</span><span data-i18n="zh">{{ ui_zh.email_label }}</span>
+          <a href="mailto:{{ person_en.email }}" target="_blank">{{ person_en.email | escape }}</a>
+        </p>
+      {%- endif -%}
+      {%- if person_en.phone -%}
+        <p>
+          <span data-i18n="en">{{ ui_en.phone_label }}</span><span data-i18n="zh">{{ ui_zh.phone_label }}</span>
+          {{ person_en.phone | escape }}
+        </p>
+      {%- endif -%}
+      {%- if person_en.website -%}
+        <p>
+          {%- assign website_label = person_en.website -%}
+          {%- assign website_last = website_label | slice: -1, 1 -%}
+          {%- if website_last == "/" -%}
+            {%- assign website_len = website_label | size | minus: 1 -%}
+            {%- assign website_label = website_label | slice: 0, website_len -%}
+          {%- endif -%}
+          <span data-i18n="en">{{ ui_en.web_label }}</span><span data-i18n="zh">{{ ui_zh.web_label }}</span>
+          {% include a.html href=person_en.website %}{{ website_label | escape }}</a>
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

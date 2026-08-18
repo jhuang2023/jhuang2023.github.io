@@ -1,0 +1,51 @@
+# Site
+title: Jujun Huang
+description: Assistant Professor of Management Information Systems, School of Management, Binghamton University-SUNY
+repository: jhuang2023/jhuang2023.github.io
+# favicon: Directory of your favicon (eg. images/favicon.ico)(optional)
+
+# Content configuration version
+version: 2
+
+# Personal info is maintained in _data/profile.yml (and _data/profile_zh.yml for the Chinese copy).
+
+# Dark Mode (true/false/never)
+# true  = always dark
+# false = user can toggle; default is dark (black)
+# never = always light (white), no toggle
+darkmode: false
+
+# Additional icon links (rendered in the header, next to GitHub/LinkedIn)
+additional_links:
+  - title: Binghamton University Faculty Profile
+    icon: fas fa-university
+    url: https://www.binghamton.edu/som/research/profile.html?id=jhuang83
+  - title: Google Scholar
+    icon: ai ai-google-scholar
+    url: https://scholar.google.com/citations?user=3PwEPgoAAAAJ&hl=en
+  - title: SSRN
+    icon: ai ai-ssrn
+    url: https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=4292234
+
+# Google Analytics and Tag Manager
+# Using more than one of these may cause issues with reporting
+# gtm: "GTM-0000000"
+# gtag: "UA-00000000-0"
+# google_analytics: "UA-00000000-0"
+
+# Footer
+footer_show_references: false
+
+# Build settings
+# theme: modern-resume-theme (Use this is you are hosting your resume yourself)
+# remote_theme: sproogen/modern-resume-theme (Use this if you are hosting your resume on GitHub)
+
+sass:
+    sass_dir: _sass
+    style: compressed
+
+plugins:
+    - jekyll-seo-tag
+
+exclude:
+    ["Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/", "lib/", "scripts/", "docker-compose.yml", "legacy", "MIGRATION_PLAN.md"]

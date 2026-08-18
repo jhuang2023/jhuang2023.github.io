@@ -1,0 +1,106 @@
+# =============================================================================
+# i18n PAIR — Landing timelines (en / zh in this same file)
+# Related profile content:
+#   - _data/profile.yml  <->  _data/profile_zh.yml
+#   - _data/ui.yml        (landing labels)
+#
+# Keep career.en / career.zh and projects.en / projects.zh aligned:
+#   - Same item count and order
+#   - Same URLs / paper titles
+#   - When you change one language list, update the other
+#
+# NOTE: the source CV does not give exact start years for the Stevens PhD/MS
+# or the SUIBE bachelor's degree. The periods below are inferred from award
+# dates (Master's Fellowship 2016, Graduate Assistantship 2019-2023,
+# Outstanding Dissertation Award 2023-2024, Assistant Professor Aug 2024) —
+# correct them if the actual enrollment years differ.
+# =============================================================================
+
+# Landing preview timelines (en / zh). URLs stay shared.
+career:
+  en:
+    - period: "2024 — Present"
+      title: Assistant Professor
+      org: Binghamton University, SUNY
+      org_url: https://www.binghamton.edu/
+      detail: School of Management · Management Information Systems
+    - period: "2019 — 2024"
+      title: Ph.D. in Business Administration
+      org: Stevens Institute of Technology
+      org_url: https://www.stevens.edu/
+      detail: Information Systems Concentration
+    - period: "2016 — 2019"
+      title: M.S. in Business Intelligence & Analytics
+      org: Stevens Institute of Technology
+      org_url: https://www.stevens.edu/
+    - period: "2012 — 2016"
+      title: Bachelor of Management
+      org: Shanghai University of International Business and Economics
+      org_url: https://www.suibe.edu.cn/
+  zh:
+    - period: "2024 — 至今"
+      title: 助理教授
+      org: 宾汉姆顿大学（SUNY）
+      org_url: https://www.binghamton.edu/
+      detail: 管理学院 · 管理信息系统
+    - period: "2019 — 2024"
+      title: 工商管理博士
+      org: 史蒂文斯理工学院
+      org_url: https://www.stevens.edu/
+      detail: 信息系统方向
+    - period: "2016 — 2019"
+      title: 商业智能与分析硕士
+      org: 史蒂文斯理工学院
+      org_url: https://www.stevens.edu/
+    - period: "2012 — 2016"
+      title: 管理学学士
+      org: 上海对外经贸大学
+      org_url: https://www.suibe.edu.cn/
+
+projects:
+  en:
+    - period: "2026"
+      title: "The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions"
+      detail: Academy of Management Proceedings, 2026(1), 20965
+    - period: "2026"
+      title: "Design Research on Artificial Intelligence: Challenges, Opportunities, and Frontiers"
+      detail: PWD Invited Presenter · AOM Annual Meeting, Philadelphia
+    - period: "2025"
+      title: "Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities"
+      detail: Proceedings of the 2025 Pre-ICIS SIGDSA Symposium
+    - period: "2024"
+      title: Interpreting Market Risks with Deep Learning Method
+      detail: TREO, ICIS 2024, Bangkok
+    - period: "2022 · Journal"
+      title: Tracking Disclosure Change Trajectories for Financial Fraud Detection
+      url: https://doi.org/10.1111/poms.13888
+      detail: Production and Operations Management [UTD, FT50, ABDC-A*]
+    - period: "2022 · Talk"
+      title: "AI Love with You: Linguistic Convergence in Human-Chatbot Relationship Development"
+      detail: AOM Annual Meeting, Seattle
+    - period: "2021 · Best Student Paper"
+      title: Leveraging Disclosure Change Trajectories to Detect Financial Frauds
+      detail: Workshop on Information Technology and Systems (WITS), Austin
+  zh:
+    - period: "2026"
+      title: "The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions"
+      detail: Academy of Management Proceedings, 2026(1), 20965
+    - period: "2026"
+      title: "Design Research on Artificial Intelligence: Challenges, Opportunities, and Frontiers"
+      detail: PWD 特邀报告人 · AOM 年会，美国费城
+    - period: "2025"
+      title: "Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities"
+      detail: Proceedings of the 2025 Pre-ICIS SIGDSA Symposium
+    - period: "2024"
+      title: Interpreting Market Risks with Deep Learning Method
+      detail: TREO, ICIS 2024，泰国曼谷
+    - period: "2022 · 期刊论文"
+      title: Tracking Disclosure Change Trajectories for Financial Fraud Detection
+      url: https://doi.org/10.1111/poms.13888
+      detail: Production and Operations Management [UTD, FT50, ABDC-A*]
+    - period: "2022 · 学术报告"
+      title: "AI Love with You: Linguistic Convergence in Human-Chatbot Relationship Development"
+      detail: AOM 年会，美国西雅图
+    - period: "2021 · 最佳学生论文"
+      title: Leveraging Disclosure Change Trajectories to Detect Financial Frauds
+      detail: Workshop on Information Technology and Systems (WITS)，美国奥斯汀

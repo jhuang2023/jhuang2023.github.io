@@ -1,0 +1,315 @@
+# =============================================================================
+# i18n PAIR — English profile (site.data.profile)
+# Companion file: _data/profile_zh.yml  (Chinese)
+#
+# These two files MUST stay in sync:
+#   - Same keys / section IDs / view keys / groups / tags / layouts / URLs
+#   - Same list item order within each section
+#   - When you add, remove, rename, or reorder content here, update
+#     profile_zh.yml with the matching Chinese copy (and vice versa)
+#   - Translate human-readable text only; do not diverge structure
+# =============================================================================
+
+person:
+  name: Jujun Huang
+  title: Assistant Professor of Management Information Systems at Binghamton University
+  company: Binghamton University
+  company_url: https://www.binghamton.edu/
+  email: jhuang83@binghamton.edu
+  website: jhuang2023.github.io/
+  github_username: jhuang2023
+  linkedin_username: jujun-amy-huang
+
+# All profile variants live in this file. Each view selects section IDs from
+# `views` (pick only; no exclusive content). Sections that share a `group`
+# are alternatives on normal pages (first selected wins). `/all/` shows every
+# section without group dedupe, and annotates titles with path + duplicate tags.
+#
+# Each section's `tags` is documentation only (no template reads it): it lists
+# exactly the view IDs whose `sections` include that section — `all` is never
+# listed because that view renders every section. `tags: []` means the section
+# is currently unpicked by every view. Keep `tags` in step with `views`.
+selection:
+  strategy: first-section-per-group
+
+about:
+  title: About Me
+  profile_image: images/jhuang_img.jpg
+  content: |
+    I am an Assistant Professor of Management Information Systems in the School of Management at Binghamton University, SUNY. My research draws on design science, data science, and large language models (LLMs) to study financial disclosure, AI-assisted communication, and trust in AI, with applications in FinTech and social media analytics.
+
+    I hold a Ph.D. in Business Administration (Information Systems concentration) and an M.S. in Business Intelligence & Analytics from Stevens Institute of Technology, and a Bachelor of Management from Shanghai University of International Business and Economics.
+
+views:
+  cv_brief:
+    title: Curriculum Vitae
+    show_about: false
+    show_profile_image: false
+    downloads:
+      - label: Download CV
+        path: assets/resume/CV_HJJ_Aug2026.pdf
+    sections:
+      - research_interests
+      - teaching_interests
+      - publications
+      - presentations
+      - academic_service
+      - awards
+      - education_brief
+      - teaching_experience
+      - non_academic_experience
+  cv:
+    title: Curriculum Vitae (Detailed)
+    show_about: false
+    show_profile_image: false
+    downloads:
+      - label: Download CV
+        path: assets/resume/CV_HJJ_Aug2026.pdf
+    sections:
+      - research_interests
+      - teaching_interests
+      - publications
+      - presentations
+      - academic_service
+      - awards
+      - education
+      - teaching_experience
+      - non_academic_experience
+  resume:
+    title: Resume
+    show_about: true
+    show_profile_image: false
+    downloads:
+      - label: Download CV
+        path: assets/resume/CV_HJJ_Aug2026.pdf
+    sections:
+      - professional_summary_resume
+      - research_interests
+      - selected_publications_resume
+      - education_brief
+      - academic_service
+      - teaching_experience
+      - awards
+  all:
+    title: Complete Profile
+    show_about: false
+    show_profile_image: true
+    show_all_sections: true
+    show_section_meta: true
+    dedupe_groups: false
+    sections: []
+
+sections:
+  research_interests:
+    group: research_interests
+    tags: [cv_brief, cv, resume]
+    title: Research Interests
+    layout: text
+    content: |
+      **Research Methods:** Natural Language Processing, Deep Learning, Econometrics
+
+      **Applied Areas:** Design Science, Data Science, LLMs, FinTech, Social Media Analytics
+
+      <div class="pub-tags-legend"><span class="pub-tags-legend-label">Publication tags:</span><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--fintech">FinTech</span><span class="pub-tag pub-tag--llm">LLMs</span><span class="pub-tag pub-tag--design">Design Science</span><span class="pub-tag pub-tag--econ">Econometrics</span><span class="pub-tag pub-tag--social">Social Media Analytics</span></div>
+
+  teaching_interests:
+    group: teaching_interests
+    tags: [cv_brief, cv]
+    title: Teaching Interests
+    layout: text
+    content: |
+      **Courses Taught:** Business Intelligence and Data Integration, Practical Data Wrangling, Natural Language Processing
+
+      **Additional Interests:** Applied Machine Learning, Generative AI for Business, Management Information Systems
+
+  grants:
+    group: grants
+    tags: []
+    title: Grants
+    layout: text
+    content: |
+      **Submitted**
+
+      1. Zhou Y. (PI), **Huang J.** (Co-PI), Guo D. (Co-PI). *Collaborative Research: Electrospray Microparticles for the Bioprinting of Composite Hydrogel Scaffolds.* National Science Foundation (NSF), submitted 2026.
+
+      **In Development**
+
+      1. **Huang J.** (PI), Guo Y. (Co-PI), Min J. (Co-PI). *Calibrating Trust in Artificial Intelligence: How AI Risk Events Shape Public Overthrust, Underthrust, and Trust Recovery.*
+
+  publications:
+    group: publications
+    tags: [cv_brief, cv]
+    title: Publications
+    layout: text
+    content: |
+      **Published Paper**
+
+      - Liu R., **Huang J.**, Zhang Z. (2022). Tracking Disclosure Change Trajectories for Financial Fraud Detection, *Production and Operations Management* [UTD, FT50, ABDC-A*]. [DOI: 10.1111/poms.13888](https://doi.org/10.1111/poms.13888) <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+
+      **Under Review**
+
+      - **Huang J.**, Liu R., Wu Y. Does Skepticism Improve Information Quality? Evidence from Earnings Conference Calls, *Decision Sciences* [ABDC-A*]. Major Revision Invited (1st Round). <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+      - Weixiao W., **Huang J.**, Torrie W. The Impact of Chinese Import Competition on U.S. Firms' Sentiment, *International Journal of Disclosure and Governance* [ABDC-B]. Under 1st Round Review. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+
+      **Conference Proceedings**
+
+      - **Huang J.**, Xiong Z. The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions. *Academy of Management Proceedings*, 2026(1), 20965. Received credit funds from the OpenAI Research Program. <span class="pub-tags"><span class="pub-tag pub-tag--llm">LLMs</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+      - **Huang J.**, Liu R., Duan W. Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities. *Proceedings of the 2025 Pre-ICIS SIGDSA Symposium*, 2025, 76. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--social">Social Media Analytics</span></span>
+
+      **Working Papers**
+
+      - **Huang J.**, Sun Y. A Framework for Tracking Skill Evolution in the Age of AI. Target: *Management Science*. <span class="pub-tags"><span class="pub-tag pub-tag--llm">LLMs</span><span class="pub-tag pub-tag--design">Design Science</span></span>
+      - McKeever D., **Huang J.**, Havrylyshyn A., Liang N. Diminished Cognition in Older CEOs and Firm Performance. Target: *FT50 journal*. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--econ">Econometrics</span></span>
+      - Jiang J., Khai S., **Huang J.**, Gao K. AI Phrasing in Earnings Calls. <span class="pub-tags"><span class="pub-tag pub-tag--llm">LLMs</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+      - **Huang J.**, Kadian A., Liu R., Duan W. Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities. Target: *ISR*. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--social">Social Media Analytics</span></span>
+      - **Huang J.**, Xiong Z., Zhang Z. The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions. Target: *MISQ*. <span class="pub-tags"><span class="pub-tag pub-tag--llm">LLMs</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+
+  presentations:
+    group: presentations
+    tags: [cv_brief, cv]
+    title: Presentations & Conferences
+    layout: text
+    content: |
+      1. **Design Research on Artificial Intelligence: Challenges, Opportunities, and Frontiers** — PWD Invited Presenter, Academy of Management (AOM) Annual Meeting. Philadelphia, PA · Aug 2026
+      2. **The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions** — Academy of Management (AOM) Annual Meeting. Philadelphia, PA · Aug 2026
+      3. **Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities** — Data Science Salon, Binghamton University, SUNY (Mar 2026); Pre-ICIS SIGDSA Symposium (Dec 2025)
+      4. **Interpreting Market Risks with Deep Learning Method** — TREO, 2024 International Conference on Information Systems (ICIS). Bangkok, Thailand · Dec 2024
+      5. **More than Words: Quantifying Colloquial Skepticism Toward Firm's Fundamentals** — Financial Management Association (FMA) Annual Meeting, Atlanta (Oct 2022); Texas State University (Apr 2023); Baruch College, CUNY (May 2023); University of Massachusetts Boston (Jun 2023)
+      6. **AI Love with You: Linguistic Convergence in Human-Chatbot Relationship Development** — Academy of Management (AOM) Annual Meeting. Seattle, WA · Aug 2022
+      7. **Leveraging Disclosure Change Trajectories to Detect Financial Frauds** — Workshop on Information Technology and Systems (WITS). Austin, TX · Dec 2021
+
+  academic_service:
+    group: academic_service
+    tags: [cv_brief, cv, resume]
+    title: Academic Service
+    layout: text
+    content: |
+      **Journal and Conference Review**
+
+      - Information Systems Research — 2026
+      - Management Science — 2026
+      - International Conference on Information Systems (ICIS) — 2025, 2024
+      - Summer Workshop on AI for Business — 2025
+      - Emerging Markets Review — 2025
+      - Workshop on Information Technology and Systems (WIST) — 2023
+      - Conference on Information Systems and Technology (CIST) — 2023
+      - INFORMS Workshop on Data Science — 2022
+      - IEEE International Conference on Services Computing — 2021
+
+  teaching_experience:
+    group: teaching_experience
+    tags: [cv_brief, cv, resume]
+    title: Teaching Experience
+    layout: text
+    content: |
+      <ul class="text-line-list">
+        <li><span class="line-main"><strong>Binghamton University</strong> — Instructor, Natural Language Processing (MIS-480P)</span><span class="line-meta">2025 Spring</span></li>
+        <li><span class="line-main"><strong>Binghamton University</strong> — Instructor, Practical Data Wrangling (MIS-480D)</span><span class="line-meta">2024 Fall</span></li>
+        <li><span class="line-main"><strong>Stevens Institute of Technology</strong> — Instructor, Business Intelligence and Data Integration (MIS-634, Master core course)</span><span class="line-meta">2022 / 2023 / 2024 Spring</span></li>
+      </ul>
+
+  awards:
+    group: awards
+    tags: [cv_brief, cv, resume]
+    title: Awards & Honors
+    layout: text
+    content: |
+      <ul class="plain-list">
+        <li><strong>Outstanding Dissertation Award</strong> — Stevens Institute of Technology, 2023 – 2024</li>
+        <li><strong>Best Student Paper Award</strong> — Workshop on Information Technology and Systems (WITS), Dec 2021</li>
+        <li><strong>Graduate Assistantship</strong> — Stevens Institute of Technology, 2019 – 2023</li>
+        <li><strong>Master's Fellowship</strong> — Stevens Institute of Technology, 2016</li>
+      </ul>
+
+  education:
+    group: education
+    tags: [cv]
+    title: Education
+    layout: text
+    content: |
+      <ul class="text-line-list">
+        <li><span class="line-main"><strong>Stevens Institute of Technology</strong>, Hoboken, NJ</span><span class="line-meta">Information Systems, Ph.D. &middot; 2024</span></li>
+        <li><span class="line-main"><strong>Stevens Institute of Technology</strong>, Hoboken, NJ</span><span class="line-meta">Business Intelligence &amp; Analytics, M.S. &middot; 2018</span></li>
+        <li><span class="line-main"><strong>Shanghai University of International Business and Economics</strong>, Shanghai, China</span><span class="line-meta">Management, B.A. &middot; 2014</span></li>
+      </ul>
+
+  education_brief:
+    group: education
+    tags: [cv_brief, resume]
+    title: Education
+    layout: text
+    content: |
+      <ul class="text-line-list">
+        <li><span class="line-main"><strong>Stevens Institute of Technology</strong>, Hoboken, NJ</span><span class="line-meta">Information Systems, Ph.D.</span></li>
+        <li><span class="line-main"><strong>Stevens Institute of Technology</strong>, Hoboken, NJ</span><span class="line-meta">Business Intelligence &amp; Analytics, M.S.</span></li>
+        <li><span class="line-main"><strong>Shanghai University of International Business and Economics</strong>, Shanghai, China</span><span class="line-meta">Management, B.A.</span></li>
+      </ul>
+
+  non_academic_experience:
+    group: non_academic_experience
+    tags: [cv_brief, cv]
+    title: Non-Academic Experience
+    layout: list
+    content:
+      - layout: left
+        title: United Nations
+        sub_title: Data Analyst Intern
+        caption: New York City, NY · Mar 2018 – Sep 2018
+        description: |
+          - Applied natural language processing techniques to process text data
+          - Provided artificial intelligence solutions for textual classification on the UN's website
+
+      - layout: left
+        title: InsightWorks Ltd.
+        sub_title: Marketing Researcher
+        caption: Shanghai, CN · Jan 2015 – May 2016
+        description: |
+          - Advised clients, including L'Oréal & Unilever, on product research and development
+          - Conducted research projects, including questionnaire design, fieldwork, and data analysis
+          - Analyzed consumer datasets to identify areas of improvement and develop solutions
+          - Wrote reports for product improvement, marketing strategy, and new product launches
+
+  professional_summary_resume:
+    group: professional_summary
+    tags: [resume]
+    title: Professional Summary
+    layout: text
+    content: |
+      Assistant Professor of Management Information Systems at Binghamton University, SUNY, researching design science, data science, large language models, FinTech, and social media analytics. Combines natural language processing, deep learning, and econometrics to study financial disclosure, AI-assisted communication, and trust in AI.
+
+  selected_publications_resume:
+    group: selected_publications
+    tags: [resume]
+    title: Publications
+    layout: text
+    content: |
+      **Published Paper**
+
+      - Liu R., **Huang J.**, Zhang Z. (2022). Tracking Disclosure Change Trajectories for Financial Fraud Detection, *Production and Operations Management* [UTD, FT50, ABDC-A*]. [DOI: 10.1111/poms.13888](https://doi.org/10.1111/poms.13888) <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+
+      **Under Review**
+
+      - **Huang J.**, Liu R., Wu Y. Does Skepticism Improve Information Quality? Evidence from Earnings Conference Calls, *Decision Sciences* [ABDC-A*]. Major Revision Invited (1st Round). <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+      - Weixiao W., **Huang J.**, Torrie W. The Impact of Chinese Import Competition on U.S. Firms' Sentiment, *International Journal of Disclosure and Governance* [ABDC-B]. Under 1st Round Review. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+
+      **Conference Proceedings**
+
+      - **Huang J.**, Xiong Z. The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions. *Academy of Management Proceedings*, 2026(1), 20965. Received credit funds from the OpenAI Research Program. <span class="pub-tags"><span class="pub-tag pub-tag--llm">LLMs</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+      - **Huang J.**, Liu R., Duan W. Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities. *Proceedings of the 2025 Pre-ICIS SIGDSA Symposium*, 2025, 76. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--social">Social Media Analytics</span></span>
+
+      **Working Papers**
+
+      - **Huang J.**, Sun Y. A Framework for Tracking Skill Evolution in the Age of AI. Target: *Management Science*. <span class="pub-tags"><span class="pub-tag pub-tag--llm">LLMs</span><span class="pub-tag pub-tag--design">Design Science</span></span>
+      - McKeever D., **Huang J.**, Havrylyshyn A., Liang N. Diminished Cognition in Older CEOs and Firm Performance. Target: *FT50 journal*. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--econ">Econometrics</span></span>
+      - Jiang J., Khai S., **Huang J.**, Gao K. AI Phrasing in Earnings Calls. <span class="pub-tags"><span class="pub-tag pub-tag--llm">LLMs</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+      - **Huang J.**, Kadian A., Liu R., Duan W. Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities. Target: *ISR*. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">NLP</span><span class="pub-tag pub-tag--social">Social Media Analytics</span></span>
+      - **Huang J.**, Xiong Z., Zhang Z. The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions. Target: *MISQ*. <span class="pub-tags"><span class="pub-tag pub-tag--llm">LLMs</span><span class="pub-tag pub-tag--fintech">FinTech</span></span>
+
+  selected_presentations_resume:
+    group: selected_presentations
+    tags: []
+    title: Selected Presentations
+    layout: text
+    content: |
+      - **Design Research on Artificial Intelligence: Challenges, Opportunities, and Frontiers** — PWD Invited Presenter, Academy of Management (AOM) Annual Meeting. Philadelphia, PA · Aug 2026
+      - **Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities** — Data Science Salon, Binghamton University, SUNY. Mar 2026

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" data-site-base="{{ '/' | relative_url }}"{% if page.lang %} data-page-lang="{{ page.lang }}"{% endif %}>
+
+{%- include head.html -%}
+
+<body class="{% if site.darkmode == true and site.darkmode != 'never' %}dark{% elsif site.darkmode == 'never' %}theme-light{% endif %}{% if page.profile %} has-section-nav{% endif %}">
+  {%- include theme-boot.html -%}
+  {%- include local-back.html -%}
+  {%- if site.darkmode == false -%}
+    {%- include theme-toggle.html -%}
+  {%- endif -%}
+
+  <div class="page-layer">
+  {%- include header.html -%}
+
+  <main class="page-content" aria-label="{{ site.data.ui.en.content }}">
+    {%- if page.profile -%}
+      {%- include section-nav.html -%}
+    {%- endif -%}
+    <div class="wrapper">
+
+      {%- if jekyll.environment == 'production' and site.gtm -%}
+        {%- include gtm_body.html -%}
+      {%- endif -%}
+
+      {% assign profile_view = site.data.profile.views[page.profile] %}
+      {% include profile-content.html view=profile_view %}
+    </div>
+  </main>
+
+  {%- include footer.html -%}
+  </div>
+  {%- if site.darkmode == false -%}
+    <script src="{{ '/assets/js/index.js' | relative_url }}"></script>
+  {%- endif -%}
+  <script src="{{ '/assets/js/lang.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/easter-egg.js' | relative_url }}"></script>
+  {%- if page.profile -%}
+    <script src="{{ '/assets/js/section-nav.js' | relative_url }}"></script>
+  {%- endif -%}
+</body>
+
+</html>

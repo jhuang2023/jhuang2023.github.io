@@ -1,0 +1,7 @@
+<div class="profile-lang" data-i18n="en">
+  {% include profile-sections.html profile=site.data.profile view=include.view lang="en" %}
+</div>
+<div class="profile-lang" data-i18n="zh">
+  {% assign view_zh = site.data.profile_zh.views[page.profile] %}
+  {% include profile-sections.html profile=site.data.profile_zh view=view_zh lang="zh" %}
+</div>

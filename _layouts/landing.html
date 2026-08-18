@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" data-site-base="{{ '/' | relative_url }}">
+
+{%- include head.html -%}
+
+<body class="landing-page{% if site.darkmode == true %} dark{% elsif site.darkmode == 'never' %} theme-light{% endif %}">
+  {%- include theme-boot.html -%}
+  {%- include lang-toggle.html -%}
+  {%- if site.darkmode == false -%}
+    {%- include theme-toggle.html -%}
+  {%- endif -%}
+
+  <div class="page-layer">
+  {%- include header.html -%}
+
+  {% assign ui_en = site.data.ui.en %}
+  {% assign ui_zh = site.data.ui.zh %}
+  {% assign career_en = site.data.landing.career.en %}
+  {% assign career_zh = site.data.landing.career.zh %}
+  {% assign projects_en = site.data.landing.projects.en %}
+  {% assign projects_zh = site.data.landing.projects.zh %}
+
+  <main class="page-content landing-content" aria-label="{{ ui_en.profile_hub }}">
+    <div class="container">
+      <section class="landing-welcome">
+        <p class="landing-label"><span data-i18n="en">{{ ui_en.welcome }}</span><span data-i18n="zh">{{ ui_zh.welcome }}</span></p>
+        <p><span data-i18n="en">{{ ui_en.welcome_sub }}</span><span data-i18n="zh">{{ ui_zh.welcome_sub }}</span></p>
+      </section>
+
+      <div class="landing-section-head">
+        <p class="landing-label"><span data-i18n="en">{{ ui_en.available_profiles }}</span><span data-i18n="zh">{{ ui_zh.available_profiles }}</span></p>
+      </div>
+
+      <div class="landing-layout">
+        <section class="landing-directory">
+          <nav class="profile-grid" aria-label="{{ ui_en.profile_versions }}">
+            <a class="profile-card profile-card--featured" href="{{ '/en/resume/' | relative_url }}" data-profile-slug="resume">
+              <span class="profile-card-body">
+                <span class="profile-name"><span data-i18n="en">{{ ui_en.profile_resume }}</span><span data-i18n="zh">{{ ui_zh.profile_resume }}</span></span>
+              </span>
+            </a>
+
+            <a class="profile-card" href="{{ '/en/cv/' | relative_url }}" data-profile-slug="cv">
+              <span class="profile-card-body">
+                <span class="profile-name"><span data-i18n="en">{{ ui_en.profile_cv }}</span><span data-i18n="zh">{{ ui_zh.profile_cv }}</span></span>
+              </span>
+            </a>
+          </nav>
+        </section>
+
+        <aside class="profile-preview" aria-roledescription="carousel" aria-label="{{ ui_en.timelines }}">
+          <button type="button" class="preview-arrow preview-arrow--prev" data-preview-prev aria-label="{{ ui_en.prev_slide }}">
+            <svg class="preview-arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button type="button" class="preview-arrow preview-arrow--next" data-preview-next aria-label="{{ ui_en.next_slide }}">
+            <svg class="preview-arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+
+          <div class="preview-glide" data-preview-glide>
+            <div class="preview-glide-track" data-preview-track>
+              <article class="preview-slide" data-preview-slide aria-label="{{ ui_en.career_slide }}">
+                <p class="preview-label"><span data-i18n="en">{{ ui_en.career_label }}</span><span data-i18n="zh">{{ ui_zh.career_label }}</span></p>
+                <h2><span data-i18n="en">{{ ui_en.career_title }}</span><span data-i18n="zh">{{ ui_zh.career_title }}</span></h2>
+                <p class="preview-context">
+                  <span data-i18n="en">{{ ui_en.career_context }}</span><span data-i18n="zh">{{ ui_zh.career_context }}</span>
+                </p>
+                <div class="career-timeline" aria-label="{{ ui_en.career_timeline }}">
+                  {% for item in career_en %}
+                  <div class="timeline-item timeline-item--active" data-i18n="en">
+                    <span class="timeline-marker" aria-hidden="true"></span>
+                    <div class="timeline-content">
+                      <span class="timeline-period">{{ item.period }}</span>
+                      <strong>{{ item.title }}</strong>
+                      <span>{% if item.org_url %}<a href="{{ item.org_url }}" target="_blank" rel="noopener">{{ item.org }}</a>{% else %}{{ item.org }}{% endif %}{% if item.detail %} · {{ item.detail }}{% endif %}</span>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  {% for item in career_zh %}
+                  <div class="timeline-item timeline-item--active" data-i18n="zh">
+                    <span class="timeline-marker" aria-hidden="true"></span>
+                    <div class="timeline-content">
+                      <span class="timeline-period">{{ item.period }}</span>
+                      <strong>{{ item.title }}</strong>
+                      <span>{% if item.org_url %}<a href="{{ item.org_url }}" target="_blank" rel="noopener">{{ item.org }}</a>{% else %}{{ item.org }}{% endif %}{% if item.detail %} · {{ item.detail }}{% endif %}</span>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </article>
+
+              <article class="preview-slide" data-preview-slide aria-label="{{ ui_en.projects_slide }}" aria-hidden="true">
+                <p class="preview-label"><span data-i18n="en">{{ ui_en.projects_label }}</span><span data-i18n="zh">{{ ui_zh.projects_label }}</span></p>
+                <h2><span data-i18n="en">{{ ui_en.projects_title }}</span><span data-i18n="zh">{{ ui_zh.projects_title }}</span></h2>
+                <p class="preview-context">
+                  <span data-i18n="en">{{ ui_en.projects_context }}</span><span data-i18n="zh">{{ ui_zh.projects_context }}</span>
+                </p>
+                <div class="project-timeline-shell" data-project-timeline-shell>
+                  <div class="career-timeline project-timeline" data-project-timeline aria-label="{{ ui_en.project_timeline }}">
+                  {% for item in projects_en %}
+                  <div class="timeline-item timeline-item--active" data-i18n="en">
+                    <span class="timeline-marker" aria-hidden="true"></span>
+                    <div class="timeline-content">
+                      <span class="timeline-period">{{ item.period }}</span>
+                      <strong>{% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</strong>
+                      <span>{{ item.detail }}</span>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  {% for item in projects_zh %}
+                  <div class="timeline-item timeline-item--active" data-i18n="zh">
+                    <span class="timeline-marker" aria-hidden="true"></span>
+                    <div class="timeline-content">
+                      <span class="timeline-period">{{ item.period }}</span>
+                      <strong>{% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</strong>
+                      <span>{{ item.detail }}</span>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  </div>
+                  <button
+                    type="button"
+                    class="project-scroll-hint"
+                    data-project-scroll-hint
+                    hidden
+                    aria-label="{{ ui_en.scroll_more_projects }}"
+                  >
+                    <svg class="project-scroll-hint-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M6 9 L12 15 L18 9" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="preview-glide-dots" role="tablist" aria-label="{{ ui_en.timeline_slides }}">
+            <button type="button" class="preview-dot is-active" data-preview-dot="0" aria-label="{{ ui_en.show_career }}" aria-selected="true"></button>
+            <button type="button" class="preview-dot" data-preview-dot="1" aria-label="{{ ui_en.show_projects }}" aria-selected="false"></button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  {%- include footer.html -%}
+  </div>
+  {%- if site.darkmode == false -%}
+    <script src="{{ '/assets/js/index.js' | relative_url }}"></script>
+  {%- endif -%}
+  <script src="{{ '/assets/js/lang.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/easter-egg.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/landing.js' | relative_url }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting…</title>
+  {% assign fallback_path = '/en/' | append: page.profile_slug | append: '/' %}
+  <script>
+    (function () {
+      var slug = {{ page.profile_slug | jsonify }};
+      var base = {{ '/' | relative_url | jsonify }};
+      var lang = "en";
+      try {
+        var stored = localStorage.getItem("site-lang");
+        if (stored === "zh" || stored === "en") {
+          lang = stored;
+        }
+      } catch (e) {
+        /* ignore */
+      }
+      var root = String(base || "/").replace(/\/+$/, "");
+      var target = (root || "") + "/" + lang + "/" + slug + "/";
+      window.location.replace(target + window.location.search + window.location.hash);
+    })();
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0;url={{ fallback_path | relative_url }}">
+    <link rel="canonical" href="{{ fallback_path | absolute_url }}">
+  </noscript>
+</head>
+<body></body>
+</html>

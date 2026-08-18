@@ -1,0 +1,310 @@
+# =============================================================================
+# i18n PAIR — 中文档案 (site.data.profile_zh)
+# 对应文件: _data/profile.yml  (English)
+#
+# 这两个文件必须保持同步：
+#   - 相同的 keys / section IDs / view keys / groups / tags / layouts / URLs
+#   - 每个 section 内列表项顺序一致
+#   - 在此增删、重命名或调整内容时，必须同步修改 profile.yml 的英文内容（反之亦然）
+#   - 只翻译可读文案，不要让两边结构分叉
+#   - 论文/期刊/会议的专有名词沿用英文原名，不做翻译
+# =============================================================================
+
+person:
+  name: Jujun Huang
+  title: 宾汉姆顿大学管理信息系统助理教授
+  company: 宾汉姆顿大学
+  company_url: https://www.binghamton.edu/
+  email: jhuang83@binghamton.edu
+  website: jhuang2023.github.io/
+  github_username: jhuang2023
+  linkedin_username: jujun-amy-huang
+
+# 每个 section 的 `tags` 仅作说明用途（模板不读取）：它精确列出 `views` 中
+# 引用了该 section 的视图 ID；`all` 视图渲染全部 section，因此不列入。
+# `tags: []` 表示当前没有任何视图选用该 section。修改 `views` 时请同步 `tags`。
+
+selection:
+  strategy: first-section-per-group
+
+about:
+  title: 关于我
+  profile_image: images/jhuang_img.jpg
+  content: |
+    我是纽约州立大学宾汉姆顿分校（Binghamton University, SUNY）管理学院的管理信息系统助理教授。我的研究结合设计科学、数据科学与大语言模型（LLMs），关注财务信息披露、AI 辅助沟通，以及公众对人工智能的信任问题，并将其应用于金融科技（FinTech）与社交媒体分析领域。
+
+    我在史蒂文斯理工学院（Stevens Institute of Technology）获得工商管理博士学位（信息系统方向）和商业智能与分析硕士学位，本科毕业于上海对外经贸大学，获管理学学士学位。
+
+views:
+  cv_brief:
+    title: 履历（CV）
+    show_about: false
+    show_profile_image: false
+    downloads:
+      - label: 下载 CV
+        path: assets/resume/CV_HJJ_Aug2026.pdf
+    sections:
+      - research_interests
+      - teaching_interests
+      - publications
+      - presentations
+      - academic_service
+      - awards
+      - education_brief
+      - teaching_experience
+      - non_academic_experience
+  cv:
+    title: 履历（CV，详细版）
+    show_about: false
+    show_profile_image: false
+    downloads:
+      - label: 下载 CV
+        path: assets/resume/CV_HJJ_Aug2026.pdf
+    sections:
+      - research_interests
+      - teaching_interests
+      - publications
+      - presentations
+      - academic_service
+      - awards
+      - education
+      - teaching_experience
+      - non_academic_experience
+  resume:
+    title: 简历
+    show_about: true
+    show_profile_image: false
+    downloads:
+      - label: 下载 CV
+        path: assets/resume/CV_HJJ_Aug2026.pdf
+    sections:
+      - professional_summary_resume
+      - research_interests
+      - selected_publications_resume
+      - education_brief
+      - academic_service
+      - teaching_experience
+      - awards
+  all:
+    title: 完整档案
+    show_about: false
+    show_profile_image: true
+    show_all_sections: true
+    show_section_meta: true
+    dedupe_groups: false
+    sections: []
+
+sections:
+  research_interests:
+    group: research_interests
+    tags: [cv_brief, cv, resume]
+    title: 研究方向
+    layout: text
+    content: |
+      **研究方法：** 自然语言处理、深度学习、计量经济学
+
+      **应用领域：** 设计科学、数据科学、大语言模型（LLMs）、金融科技（FinTech）、社交媒体分析
+
+      <div class="pub-tags-legend"><span class="pub-tags-legend-label">论文标签：</span><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--fintech">金融科技</span><span class="pub-tag pub-tag--llm">大语言模型</span><span class="pub-tag pub-tag--design">设计科学</span><span class="pub-tag pub-tag--econ">计量经济学</span><span class="pub-tag pub-tag--social">社交媒体分析</span></div>
+
+  teaching_interests:
+    group: teaching_interests
+    tags: [cv_brief, cv]
+    title: 教学方向
+    layout: text
+    content: |
+      **已讲授课程：** 商业智能与数据集成、实用数据整理、自然语言处理
+
+      **其他教学兴趣：** 应用机器学习、面向商业的生成式人工智能、管理信息系统
+
+  grants:
+    group: grants
+    tags: []
+    title: 科研经费
+    layout: text
+    content: |
+      **已提交**
+
+      1. Zhou Y.（PI）、**Huang J.**（Co-PI）、Guo D.（Co-PI）。*Collaborative Research: Electrospray Microparticles for the Bioprinting of Composite Hydrogel Scaffolds.* 美国国家科学基金会（NSF），已提交，2026。
+
+      **筹备中**
+
+      1. **Huang J.**（PI）、Guo Y.（Co-PI）、Min J.（Co-PI）。*Calibrating Trust in Artificial Intelligence: How AI Risk Events Shape Public Overthrust, Underthrust, and Trust Recovery.*
+
+  publications:
+    group: publications
+    tags: [cv_brief, cv]
+    title: 论文发表
+    layout: text
+    content: |
+      **已发表**
+
+      - Liu R.、**Huang J.**、Zhang Z.（2022）. Tracking Disclosure Change Trajectories for Financial Fraud Detection, *Production and Operations Management* [UTD, FT50, ABDC-A*]. [DOI: 10.1111/poms.13888](https://doi.org/10.1111/poms.13888) <span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+
+      **审稿中**
+
+      - **Huang J.**、Liu R.、Wu Y. Does Skepticism Improve Information Quality? Evidence from Earnings Conference Calls, *Decision Sciences* [ABDC-A*]. 大修邀请中（第一轮）。<span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+      - Weixiao W.、**Huang J.**、Torrie W. The Impact of Chinese Import Competition on U.S. Firms' Sentiment, *International Journal of Disclosure and Governance* [ABDC-B]. 第一轮审稿中。<span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+
+      **会议论文集**
+
+      - **Huang J.**、Xiong Z. The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions. *Academy of Management Proceedings*, 2026(1), 20965. 获 OpenAI Research Program 研究经费资助。<span class="pub-tags"><span class="pub-tag pub-tag--llm">大语言模型</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+      - **Huang J.**、Liu R.、Duan W. Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities. *Proceedings of the 2025 Pre-ICIS SIGDSA Symposium*, 2025, 76. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--social">社交媒体分析</span></span>
+
+      **工作论文**
+
+      - **Huang J.**、Sun Y. A Framework for Tracking Skill Evolution in the Age of AI. 目标期刊：*Management Science*。<span class="pub-tags"><span class="pub-tag pub-tag--llm">大语言模型</span><span class="pub-tag pub-tag--design">设计科学</span></span>
+      - McKeever D.、**Huang J.**、Havrylyshyn A.、Liang N. Diminished Cognition in Older CEOs and Firm Performance. 目标期刊：*FT50 journal*。<span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--econ">计量经济学</span></span>
+      - Jiang J.、Khai S.、**Huang J.**、Gao K. AI Phrasing in Earnings Calls. <span class="pub-tags"><span class="pub-tag pub-tag--llm">大语言模型</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+      - **Huang J.**、Kadian A.、Liu R.、Duan W. Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities. 目标期刊：*ISR*。<span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--social">社交媒体分析</span></span>
+      - **Huang J.**、Xiong Z.、Zhang Z. The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions. 目标期刊：*MISQ*。<span class="pub-tags"><span class="pub-tag pub-tag--llm">大语言模型</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+
+  presentations:
+    group: presentations
+    tags: [cv_brief, cv]
+    title: 学术报告与会议
+    layout: text
+    content: |
+      1. **Design Research on Artificial Intelligence: Challenges, Opportunities, and Frontiers** — PWD 特邀报告人，Academy of Management（AOM）年会。美国费城 · 2026年8月
+      2. **The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions** — Academy of Management（AOM）年会。美国费城 · 2026年8月
+      3. **Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities** — Data Science Salon（宾汉姆顿大学，2026年3月）；Pre-ICIS SIGDSA Symposium（2025年12月）
+      4. **Interpreting Market Risks with Deep Learning Method** — TREO, 2024 International Conference on Information Systems (ICIS)。泰国曼谷 · 2024年12月
+      5. **More than Words: Quantifying Colloquial Skepticism Toward Firm's Fundamentals** — Financial Management Association（FMA）年会，美国亚特兰大（2022年10月）；Texas State University（2023年4月）；Baruch College, CUNY（2023年5月）；University of Massachusetts Boston（2023年6月）
+      6. **AI Love with You: Linguistic Convergence in Human-Chatbot Relationship Development** — Academy of Management（AOM）年会。美国西雅图 · 2022年8月
+      7. **Leveraging Disclosure Change Trajectories to Detect Financial Frauds** — Workshop on Information Technology and Systems（WITS）。美国奥斯汀 · 2021年12月
+
+  academic_service:
+    group: academic_service
+    tags: [cv_brief, cv, resume]
+    title: 学术服务
+    layout: text
+    content: |
+      **期刊与会议审稿**
+
+      - Information Systems Research — 2026
+      - Management Science — 2026
+      - International Conference on Information Systems（ICIS）— 2025、2024
+      - Summer Workshop on AI for Business — 2025
+      - Emerging Markets Review — 2025
+      - Workshop on Information Technology and Systems（WIST）— 2023
+      - Conference on Information Systems and Technology（CIST）— 2023
+      - INFORMS Workshop on Data Science — 2022
+      - IEEE International Conference on Services Computing — 2021
+
+  teaching_experience:
+    group: teaching_experience
+    tags: [cv_brief, cv, resume]
+    title: 教学经历
+    layout: text
+    content: |
+      <ul class="text-line-list">
+        <li><span class="line-main"><strong>宾汉姆顿大学</strong> — 授课教师，自然语言处理（MIS-480P）</span><span class="line-meta">2025年春季</span></li>
+        <li><span class="line-main"><strong>宾汉姆顿大学</strong> — 授课教师，实用数据整理（MIS-480D）</span><span class="line-meta">2024年秋季</span></li>
+        <li><span class="line-main"><strong>史蒂文斯理工学院</strong> — 授课教师，商业智能与数据集成（MIS-634，硕士核心课程）</span><span class="line-meta">2022 / 2023 / 2024年春季</span></li>
+      </ul>
+
+  awards:
+    group: awards
+    tags: [cv_brief, cv, resume]
+    title: 奖项与荣誉
+    layout: text
+    content: |
+      <ul class="plain-list">
+        <li><strong>优秀博士论文奖</strong> — 史蒂文斯理工学院，2023 – 2024</li>
+        <li><strong>最佳学生论文奖</strong> — Workshop on Information Technology and Systems（WITS），2021年12月</li>
+        <li><strong>研究生助教/助研奖学金</strong> — 史蒂文斯理工学院，2019 – 2023</li>
+        <li><strong>硕士奖学金</strong> — 史蒂文斯理工学院，2016</li>
+      </ul>
+
+  education:
+    group: education
+    tags: [cv]
+    title: 教育经历
+    layout: text
+    content: |
+      <ul class="text-line-list">
+        <li><span class="line-main"><strong>史蒂文斯理工学院</strong>，美国新泽西州霍博肯</span><span class="line-meta">信息系统，博士 · 2024</span></li>
+        <li><span class="line-main"><strong>史蒂文斯理工学院</strong>，美国新泽西州霍博肯</span><span class="line-meta">商业智能与分析，硕士 · 2018</span></li>
+        <li><span class="line-main"><strong>上海对外经贸大学</strong>，中国上海</span><span class="line-meta">管理学，学士 · 2014</span></li>
+      </ul>
+
+  education_brief:
+    group: education
+    tags: [cv_brief, resume]
+    title: 教育经历
+    layout: text
+    content: |
+      <ul class="text-line-list">
+        <li><span class="line-main"><strong>史蒂文斯理工学院</strong>，美国新泽西州霍博肯</span><span class="line-meta">信息系统，博士</span></li>
+        <li><span class="line-main"><strong>史蒂文斯理工学院</strong>，美国新泽西州霍博肯</span><span class="line-meta">商业智能与分析，硕士</span></li>
+        <li><span class="line-main"><strong>上海对外经贸大学</strong>，中国上海</span><span class="line-meta">管理学，学士</span></li>
+      </ul>
+
+  non_academic_experience:
+    group: non_academic_experience
+    tags: [cv_brief, cv]
+    title: 非学术工作经历
+    layout: list
+    content:
+      - layout: left
+        title: 联合国
+        sub_title: 数据分析实习生
+        caption: 美国纽约 · 2018年3月 – 2018年9月
+        description: |
+          - 运用自然语言处理技术处理文本数据
+          - 为联合国官网的文本分类任务提供人工智能解决方案
+
+      - layout: left
+        title: InsightWorks Ltd.
+        sub_title: 市场研究员
+        caption: 中国上海 · 2015年1月 – 2016年5月
+        description: |
+          - 为欧莱雅（L'Oréal）、联合利华（Unilever）等客户的产品研发提供咨询建议
+          - 开展研究项目，包括问卷设计、实地调研与数据分析
+          - 分析消费者数据，识别改进空间并提出解决方案
+          - 撰写产品改进、市场策略与新品上市相关报告
+
+  professional_summary_resume:
+    group: professional_summary
+    tags: [resume]
+    title: 个人简介
+    layout: text
+    content: |
+      纽约州立大学宾汉姆顿分校管理学院管理信息系统助理教授，研究方向涵盖设计科学、数据科学、大语言模型、金融科技与社交媒体分析，综合运用自然语言处理、深度学习与计量经济学方法，研究财务信息披露、AI 辅助沟通与公众对人工智能的信任问题。
+
+  selected_publications_resume:
+    group: selected_publications
+    tags: [resume]
+    title: 论文发表
+    layout: text
+    content: |
+      **已发表**
+
+      - Liu R.、**Huang J.**、Zhang Z.（2022）. Tracking Disclosure Change Trajectories for Financial Fraud Detection, *Production and Operations Management* [UTD, FT50, ABDC-A*]. [DOI: 10.1111/poms.13888](https://doi.org/10.1111/poms.13888) <span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+
+      **审稿中**
+
+      - **Huang J.**、Liu R.、Wu Y. Does Skepticism Improve Information Quality? Evidence from Earnings Conference Calls, *Decision Sciences* [ABDC-A*]. 大修邀请中（第一轮）。<span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+      - Weixiao W.、**Huang J.**、Torrie W. The Impact of Chinese Import Competition on U.S. Firms' Sentiment, *International Journal of Disclosure and Governance* [ABDC-B]. 第一轮审稿中。<span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+
+      **会议论文集**
+
+      - **Huang J.**、Xiong Z. The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions. *Academy of Management Proceedings*, 2026(1), 20965. 获 OpenAI Research Program 研究经费资助。<span class="pub-tags"><span class="pub-tag pub-tag--llm">大语言模型</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+      - **Huang J.**、Liu R.、Duan W. Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities. *Proceedings of the 2025 Pre-ICIS SIGDSA Symposium*, 2025, 76. <span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--social">社交媒体分析</span></span>
+
+      **工作论文**
+
+      - **Huang J.**、Sun Y. A Framework for Tracking Skill Evolution in the Age of AI. 目标期刊：*Management Science*。<span class="pub-tags"><span class="pub-tag pub-tag--llm">大语言模型</span><span class="pub-tag pub-tag--design">设计科学</span></span>
+      - McKeever D.、**Huang J.**、Havrylyshyn A.、Liang N. Diminished Cognition in Older CEOs and Firm Performance. 目标期刊：*FT50 journal*。<span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--econ">计量经济学</span></span>
+      - Jiang J.、Khai S.、**Huang J.**、Gao K. AI Phrasing in Earnings Calls. <span class="pub-tags"><span class="pub-tag pub-tag--llm">大语言模型</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+      - **Huang J.**、Kadian A.、Liu R.、Duan W. Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities. 目标期刊：*ISR*。<span class="pub-tags"><span class="pub-tag pub-tag--nlp">自然语言处理</span><span class="pub-tag pub-tag--social">社交媒体分析</span></span>
+      - **Huang J.**、Xiong Z.、Zhang Z. The Penalty of AI-assisted Disclosure: Language Convergence, Innovation, and Market Reactions. 目标期刊：*MISQ*。<span class="pub-tags"><span class="pub-tag pub-tag--llm">大语言模型</span><span class="pub-tag pub-tag--fintech">金融科技</span></span>
+
+  selected_presentations_resume:
+    group: selected_presentations
+    tags: []
+    title: 代表性学术报告
+    layout: text
+    content: |
+      - **Design Research on Artificial Intelligence: Challenges, Opportunities, and Frontiers** — PWD 特邀报告人，Academy of Management（AOM）年会。美国费城 · 2026年8月
+      - **Professional Skepticism: A Catalyst for Public Discourse in Online Medical Communities** — Data Science Salon（宾汉姆顿大学）。2026年3月

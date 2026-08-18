@@ -1,0 +1,96 @@
+# =============================================================================
+# i18n PAIR — UI strings (en / zh in this same file)
+# Related content files:
+#   - _data/profile.yml  <->  _data/profile_zh.yml
+#   - _data/landing.yml   (career/projects en <-> zh)
+#
+# Keep en.* and zh.* keys identical. When you add or rename a UI string under
+# `en`, add/update the matching Chinese value under `zh` (and vice versa).
+# =============================================================================
+
+# Shared UI strings for en / zh. Applied via data-i18n wrappers + localStorage.
+en:
+  welcome: Welcome
+  welcome_sub: Choose a profile to continue.
+  available_profiles: Available profiles
+  profile_resume: Resume
+  profile_cv: Curriculum Vitae
+  career_label: CAREER + EDUCATION
+  career_title: Career & Education
+  career_context: Education, research training, and academic appointments
+  projects_label: PUBLICATIONS
+  projects_title: Publications & Research
+  projects_context: Peer-reviewed publications, conference proceedings, and invited talks in design science, data science, and FinTech research
+  present: Present
+  period_sep: "—"
+  email_label: "Email:"
+  phone_label: "Phone:"
+  web_label: "Web:"
+  print: Print
+  live_demo: Live demo
+  references_on_request: References on request
+  back: Back
+  go_back: Go back
+  lang_toggle_to_zh: 切换到中文
+  lang_toggle_to_en: Switch to English
+  lang_short: EN
+  profile_hub: Profile hub
+  profile_versions: Profile versions
+  timelines: Career and project timelines
+  prev_slide: Previous slide
+  next_slide: Next slide
+  career_slide: Career and education
+  projects_slide: Publications and research
+  career_timeline: Career and education timeline
+  project_timeline: Publications and research timeline
+  scroll_more_projects: Scroll down for more publications
+  show_career: Show career and education
+  show_projects: Show publications and research
+  timeline_slides: Timeline slides
+  content: Content
+  section_nav: Navigation
+  section_nav_collapse: Collapse navigation
+  section_nav_expand: Expand navigation
+
+zh:
+  welcome: 欢迎
+  welcome_sub: 请选择一个档案继续浏览。
+  available_profiles: 可选档案
+  profile_resume: 简历
+  profile_cv: 履历
+  career_label: 职业 + 教育
+  career_title: 职业与教育
+  career_context: 教育经历、科研训练与学术任职
+  projects_label: 科研产出
+  projects_title: 论文与科研产出
+  projects_context: 设计科学、数据科学与金融科技研究领域的同行评审论文、会议论文集与特邀报告
+  present: 至今
+  period_sep: "—"
+  email_label: "邮箱："
+  phone_label: "电话："
+  web_label: "网站："
+  print: 打印
+  live_demo: 在线演示
+  references_on_request: 推荐信可按需提供
+  back: 返回
+  go_back: 返回上一页
+  lang_toggle_to_zh: 切换到中文
+  lang_toggle_to_en: Switch to English
+  lang_short: 中文
+  profile_hub: 档案中心
+  profile_versions: 档案版本
+  timelines: 职业与项目时间线
+  prev_slide: 上一张
+  next_slide: 下一张
+  career_slide: 职业与教育
+  projects_slide: 论文与科研产出
+  career_timeline: 职业与教育时间线
+  project_timeline: 论文与科研产出时间线
+  scroll_more_projects: 向下滚动查看更多科研产出
+  show_career: 显示职业与教育
+  show_projects: 显示论文与科研产出
+  timeline_slides: 时间线幻灯片
+  content: 内容
+  section_nav: 导航
+  section_nav_collapse: 收起导航
+  section_nav_expand: 展开导航
