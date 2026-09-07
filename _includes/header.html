@@ -31,7 +31,6 @@
             title="{{ ui_en.print | escape }}"
             data-label-en="{{ ui_en.print | escape }}"
             data-label-zh="{{ ui_zh.print | escape }}"
-            data-print-action
             onclick="window.print(); this.blur();"
           >
             <svg class="doc-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -78,6 +77,19 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 header-right">
       <ul class="icons no-print">
+        <li>
+          <button
+            type="button"
+            class="button button--sacnite button--round-l"
+            aria-label="{{ ui_en.qr_code | escape }}"
+            title="{{ ui_en.qr_code | escape }}"
+            data-label-en="{{ ui_en.qr_code | escape }}"
+            data-label-zh="{{ ui_zh.qr_code | escape }}"
+            data-qr-action
+          >
+            <i class="fas fa-qrcode" aria-hidden="true"></i>
+          </button>
+        </li>
         {%- if site.dribbble_username -%}
           <li>
             <a target="_blank" href="https://dribbble.com/{{ site.dribbble_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">
@@ -202,6 +214,38 @@
           {% include a.html href=person_en.website %}{{ website_label | escape }}</a>
         </p>
       {%- endif -%}
+
+        <dialog class="qr-dialog no-print" id="qr-dialog" aria-labelledby="qr-dialog-title">
+          <div class="qr-dialog-body">
+            <button
+              type="button"
+              class="doc-action qr-dialog-close"
+              aria-label="{{ ui_en.close | escape }}"
+              title="{{ ui_en.close | escape }}"
+              data-label-en="{{ ui_en.close | escape }}"
+              data-label-zh="{{ ui_zh.close | escape }}"
+              data-qr-close
+            >
+              <svg class="doc-action-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </button>
+            <p class="qr-dialog-hint" id="qr-dialog-title">
+              <span data-i18n="en">{{ ui_en.qr_hint | escape }}</span>
+              <span data-i18n="zh">{{ ui_zh.qr_hint | escape }}</span>
+            </p>
+            <div class="qr-dialog-code" aria-hidden="true">
+              <canvas data-qr-canvas width="300" height="300"></canvas>
+            </div>
+            <p class="qr-dialog-toggle-hint" aria-hidden="true">
+              <span data-i18n="en" data-qr-hint-flat>{{ ui_en.qr_tap_3d | escape }}</span>
+              <span data-i18n="zh" data-qr-hint-flat>{{ ui_zh.qr_tap_3d | escape }}</span>
+              <span data-i18n="en" data-qr-hint-3d hidden>{{ ui_en.qr_tap_scan | escape }}</span>
+              <span data-i18n="zh" data-qr-hint-3d hidden>{{ ui_zh.qr_tap_scan | escape }}</span>
+            </p>
+            <p class="qr-dialog-url" data-qr-url></p>
+          </div>
+        </dialog>
     </div>
   </div>
 </div>

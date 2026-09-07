@@ -1,9 +1,15 @@
 /* Section navigation — index rail on desktop; draggable glider on mobile; print-hidden */
 
+/*
+  Bootstrap 3 (imported by base.scss) sets `html { font-size: 10px }`, so in
+  this file 1rem = 10px, NOT 16px. Body copy is 1.6rem = 16px; every size
+  below was picked against that. Reading these as 16px-rem is exactly what
+  made the first version of this rail come out at 10.8px links.
+*/
 body.has-section-nav {
-  --section-nav-width: 16.5rem;
-  --section-nav-expanded-width: 16.5rem;
-  --section-nav-toggle-size: 2rem;
+  --section-nav-width: 30rem;
+  --section-nav-expanded-width: 30rem;
+  --section-nav-toggle-size: 3.2rem;
   --section-nav-motion: 0.36s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
@@ -28,13 +34,13 @@ body.has-section-nav {
   left: 0;
   top: 0;
   box-sizing: border-box;
-  width: var(--section-nav-expanded-width, 19rem);
-  max-width: min(22rem, 34vw);
+  width: var(--section-nav-expanded-width, 30rem);
+  max-width: min(40rem, 42vw);
   height: auto;
   max-height: calc(100vh - 6.75rem);
   display: flex;
   flex-direction: column;
-  padding: 0.75rem 0.85rem 0.9rem 1rem;
+  padding: 1.2rem 1.4rem 1.4rem 1.6rem;
   overflow-x: hidden;
   overflow-y: auto;
   background: var(--page-bg, #ffffff);
@@ -56,8 +62,8 @@ body.has-section-nav {
   flex: 0 0 auto;
   box-sizing: border-box;
   min-height: var(--section-nav-toggle-size);
-  margin: 0 0 0.55rem;
-  padding-bottom: 0.55rem;
+  margin: 0 0 0.8rem;
+  padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--page-border, #dddddd);
 }
 
@@ -98,8 +104,8 @@ body.has-section-nav {
 }
 
 .section-nav-toggle-icon {
-  width: 1.05rem;
-  height: 1.05rem;
+  width: 1.6rem;
+  height: 1.6rem;
   display: block;
   transition: transform var(--section-nav-motion);
 }
@@ -120,7 +126,7 @@ body.has-section-nav {
 .section-nav-index {
   display: flex;
   align-items: stretch;
-  gap: 0.55rem;
+  gap: 1rem;
   flex: 0 0 auto;
   min-width: 0;
 }
@@ -131,18 +137,24 @@ body.has-section-nav {
   overflow: visible;
 }
 
+/*
+  `auto`, not `max-content`: the list has to be bound by the drawer so a long
+  heading wraps (see .section-nav-link-label). measureNavWidth() still gets the
+  unwrapped width because its probe is `max-content` and auto-width blocks
+  contribute their max-content size to it.
+*/
 .section-nav-panel {
   display: block;
   margin: 0;
   padding: 0;
-  width: max-content;
+  width: auto;
   min-width: 100%;
 }
 
 .section-nav-label {
   flex: 1 1 auto;
   margin: 0;
-  font-size: 0.78rem;
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   line-height: var(--section-nav-toggle-size);
@@ -156,7 +168,7 @@ body.has-section-nav {
   flex: 0 0 auto;
   margin: 0;
   color: var(--section-nav-muted, #8793a0);
-  font-size: 0.76rem;
+  font-size: 1.2rem;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
   line-height: 1.3;
@@ -164,7 +176,7 @@ body.has-section-nav {
 
 .section-nav-progress {
   flex: 0 0 auto;
-  width: 2px;
+  width: 3px;
   margin: 0.15rem 0;
   overflow: hidden;
   border-radius: 1px;
@@ -185,12 +197,12 @@ body.has-section-nav {
   list-style: none;
   margin: 0;
   padding: 0;
-  width: max-content;
+  width: auto;
   min-width: 100%;
 }
 
 .section-nav-list li + li {
-  margin-top: 0.1rem;
+  margin-top: 0.2rem;
 }
 
 /* Beat global `a` / `body.dark a` link blue */
@@ -201,13 +213,13 @@ body.theme-light .section-nav a.section-nav-link {
   position: relative;
   margin: 0;
   align-items: baseline;
-  gap: 0.65rem;
-  padding: 0.45rem 0.6rem 0.45rem 0.7rem;
+  gap: 1rem;
+  padding: 0.7rem 1rem 0.7rem 1.2rem;
   border: none;
   border-radius: 0;
   color: var(--page-muted, #4c4c4c);
   text-decoration: none;
-  font-size: 1.08rem;
+  font-size: 1.8rem;
   font-weight: 400;
   line-height: 1.35;
   white-space: nowrap;
@@ -216,25 +228,31 @@ body.theme-light .section-nav a.section-nav-link {
 
 .section-nav-link-index {
   flex: 0 0 auto;
-  min-width: 1.35rem;
+  min-width: 2.4rem;
   color: var(--section-nav-muted, #8793a0);
-  font-size: 0.72rem;
+  font-size: 1.2rem;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.05em;
   line-height: inherit;
   opacity: 0.8;
 }
 
+/*
+  The 48-char NIW headings would need ~500px at 18px; wrapping them beats
+  clipping. The nowrap stays on the link itself so the collapsed width-0
+  trick below keeps single-line rows.
+*/
 .section-nav-link-label {
   min-width: 0;
+  white-space: normal;
 }
 
 body .section-nav a.section-nav-link::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.45rem;
-  bottom: 0.45rem;
+  top: 0.7rem;
+  bottom: 0.7rem;
   width: 2px;
   background: transparent;
   transition: background-color 0.15s ease;
@@ -431,6 +449,8 @@ body.dark .section-nav.is-idle:not(.is-collapsed) .section-nav-drawer:focus-with
   .section-nav-link-label {
   width: 0;
   opacity: 0;
+  /* at width 0 a wrapping label would stack one word per line and grow the row */
+  white-space: nowrap;
 }
 
 body .section-nav.is-collapsed a.section-nav-link,
@@ -457,7 +477,7 @@ body.theme-light .section-nav.is-idle:not(.is-collapsed)
   .section-nav-link-index {
   min-width: var(--section-nav-toggle-size);
   color: var(--section-nav-muted, #8793a0);
-  font-size: 0.74rem;
+  font-size: 1.2rem;
   text-align: center;
   opacity: 1;
 }
@@ -485,9 +505,9 @@ body.theme-light .section-nav.is-idle:not(.is-collapsed)
   body .section-nav a.section-nav-link,
   body.dark .section-nav a.section-nav-link,
   body.theme-light .section-nav a.section-nav-link {
-    font-size: 1.2rem;
-    padding-top: 0.38rem;
-    padding-bottom: 0.38rem;
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 }
 
@@ -1027,8 +1047,13 @@ body.theme-light .section-nav.is-idle:not(.is-collapsed)
   /*
     `--nav-t` runs 0 (a full slide away) → 1 (dead centre) and is rewritten by
     section-nav.js on every carousel scroll frame, so an item grows gradually
-    while it travels to the middle instead of snapping once it lands. Size is
-    driven purely by `transform`, never by font-size, so nothing reflows.
+    while it travels to the middle instead of snapping once it lands.
+
+    The scale lives on the INNER link, never on the snap-aligned `li`:
+    snap areas are computed from the transformed box, so scaling the `li`
+    itself while the finger drags makes `x mandatory` retarget every frame
+    and the carousel judders violently. With the `li` box constant the snap
+    maths never move under the gesture.
   */
   .section-nav-mobile-viewport .section-nav-list li {
     position: relative;
@@ -1036,6 +1061,9 @@ body.theme-light .section-nav.is-idle:not(.is-collapsed)
     min-width: 0;
     margin: 0;
     scroll-snap-align: center;
+  }
+
+  .section-nav-mobile-viewport .section-nav-list li > a {
     transform: scale(calc(0.75 + 0.25 * var(--nav-t, 0)));
     transform-origin: center;
     opacity: calc(0.5 + 0.5 * var(--nav-t, 0));
@@ -1232,6 +1260,10 @@ body.theme-light .section-nav.is-idle:not(.is-collapsed)
     min-width: 0;
     margin: 0;
     scroll-snap-align: center;
+  }
+
+  /* scale on the inner link — see the snap-box note in the base block */
+  .section-nav.is-compact .section-nav-mobile-viewport .section-nav-list li > a {
     transform: scale(calc(0.75 + 0.25 * var(--nav-t, 0)));
     transform-origin: center;
     opacity: calc(0.5 + 0.5 * var(--nav-t, 0));

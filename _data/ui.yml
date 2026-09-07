@@ -27,6 +27,11 @@ en:
   phone_label: "Phone:"
   web_label: "Web:"
   print: Print
+  qr_code: QR code
+  qr_hint: Scan with your phone to open this page
+  qr_tap_3d: Tap to see it from the side
+  qr_tap_scan: Drag to spin · tap to scan
+  close: Close
   live_demo: Live demo
   references_on_request: References on request
   back: Back
@@ -70,6 +75,11 @@ zh:
   phone_label: "电话："
   web_label: "网站："
   print: 打印
+  qr_code: 二维码
+  qr_hint: 手机扫码打开本页
+  qr_tap_3d: 点一下换个视角，它是一棵树
+  qr_tap_scan: 拖拽旋转 · 点一下回到扫码
+  close: 关闭
   live_demo: 在线演示
   references_on_request: 推荐信可按需提供
   back: 返回

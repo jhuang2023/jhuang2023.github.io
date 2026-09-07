@@ -74,14 +74,14 @@
       toggle.setAttribute("title", label);
     }
 
-    document.querySelectorAll("[data-print-action]").forEach(function (el) {
-      var printLabel =
+    document.querySelectorAll("[data-label-en][data-label-zh]").forEach(function (el) {
+      var label =
         next === ZH
           ? el.getAttribute("data-label-zh")
           : el.getAttribute("data-label-en");
-      if (printLabel) {
-        el.setAttribute("aria-label", printLabel);
-        el.setAttribute("title", printLabel);
+      if (label) {
+        el.setAttribute("aria-label", label);
+        el.setAttribute("title", label);
       }
     });
 

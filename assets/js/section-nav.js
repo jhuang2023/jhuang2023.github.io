@@ -7,7 +7,7 @@
   var ACTIVE = "is-active";
   var STORAGE_KEY = "section-nav-collapsed";
   var IDLE_DELAY = 1600;
-  var RAIL_MAX_VIEWPORT_RATIO = 0.22;
+  var RAIL_MAX_VIEWPORT_RATIO = 0.33; /* ~300px drawer: hand over to the compact carousel below ~900px windows */
   var WAKE_SECTIONS = 3; /* section boundaries crossed before the rail wakes */
   var WAKE_WINDOW = 3000; /* ms those crossings have to happen within */
   var LOCK_SETTLE = 180; /* ms of stillness after a click before the spy resumes */
@@ -149,11 +149,20 @@
     }
 
     var probe = document.createElement("div");
+    /* the clones must sit under a .section-nav ancestor, or none of the
+       drawer typography applies and the measurement comes out tiny */
+    probe.className = "section-nav";
     probe.style.cssText =
       "position:absolute;left:-99999px;top:0;visibility:hidden;pointer-events:none;width:max-content;";
     var panelClone = panel.cloneNode(true);
     panelClone.removeAttribute("data-i18n");
     panelClone.style.display = "block";
+    /* Measure every row as if active: the active row is weight 500, a few px
+       wider than 400, and the list is bound to the drawer width now, so an
+       under-measured drawer would wrap whichever heading is highlighted. */
+    panelClone.querySelectorAll(".section-nav-link").forEach(function (link) {
+      link.classList.add(ACTIVE);
+    });
     probe.appendChild(panelClone);
     if (header) {
       var headerClone = header.cloneNode(true);
@@ -187,8 +196,9 @@
     var width = Math.ceil(probe.scrollWidth + pad + gutter + 2);
     document.body.removeChild(probe);
 
-    var min = 12 * 16;
-    var max = Math.min(30 * 16, window.innerWidth * 0.42);
+    /* Plain px: html is 10px (Bootstrap 3), so "N * 16" rem maths lands wrong. */
+    var min = 260;
+    var max = Math.min(400, window.innerWidth * 0.42);
     width = Math.max(min, Math.min(max, width));
 
     body.style.setProperty("--section-nav-expanded-width", width + "px");
@@ -676,6 +686,16 @@
     initMobileCarousel();
     initCollapse();
     updateFromScroll();
+
+    /* Roboto lands after DOMContentLoaded; measured in the fallback font the
+       drawer comes out ~2px narrow and the highlighted heading wraps. */
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () {
+        if (isRailNav()) {
+          measureNavWidth();
+        }
+      });
+    }
   }
 
   if (document.readyState === "loading") {
