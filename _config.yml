@@ -15,6 +15,9 @@ version: 2
 # never = always light (white), no toggle
 darkmode: false
 
+# QR share button + dialog in the header (true/false; unset = true)
+qr_share: false
+
 # Additional icon links (rendered in the header, next to GitHub/LinkedIn)
 additional_links:
   - title: Binghamton University Faculty Profile
